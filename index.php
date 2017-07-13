@@ -43,15 +43,18 @@
       ?>
       <!-- MENU -->
       <?php
-        //include('menu.php');
+        include('menu.php');
       ?>
 
       <!-- MENU -->
       <div class="content-wrapper" id="content"> 
         <section class="content">
           <div class="panel">
+
             <div class="panel-heading text-center">
+            <img class="profile-user-img img-responsive img-circle" src="./assets/img/gpa.png" alt="Grupo Plasma Automation">
                 <h3>Bienvenido administrador</h3>
+
                <!-- <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>-->
     
             </div>
