@@ -1,11 +1,10 @@
-
 <?php //include('login/validarsesion.php');?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Usuarios | Dashboard</title>
+    <title>Proyectos | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -23,7 +22,8 @@
     <script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+   <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
       <div class="content-wrapper" id="content"> 
         <section class="content-header">
           <h1>
-            Usuarios
+            Proyectos
             <small></small>
           </h1>
         </section>
@@ -61,14 +61,15 @@
          <div class="row">
           <div class="panel">
             <div class="panel-heading">
+
 <!--Aplicación de modal con Bootstrap -->
-            <button class="btn btn-danger" data-toggle="modal" data-target="#miventana">Agregar usuario</button>
-<!--Breadcrumb -->
+            <button class="btn btn-danger" data-toggle="modal" data-target="#miventana">Agregar Proyecto</button>
+ <!--Breadcrumb -->
               <section class="content-header">
                 <ol class="breadcrumb">
                    <i class="fa fa-dashboard"></i>
                     <li><a href="">Home</a></li>
-                    <li class="active">Usuarios
+                    <li class="active">Proyectos
                    </li>
                 </ol>
               </section>
@@ -80,7 +81,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
                     </button>
-                    <h4>Agregar Usuario</h4>
+                    <h4>Agregar Proyecto</h4>
                   </div>
                   <div class="modal-body">
 <!--Inicia formulario de agregar usuario-->
@@ -89,26 +90,18 @@
                               <div class="panel">
                                 <div class="panel-heading"></div>
                                 <div class="panel-body">
-                                  <form method="post" action="usuarios.php" enctype="multipart/form-data" id="form">
+                                  <form method="post" action="proyecto.php" enctype="multipart/form-data" id="form">
                                     <div class="form-group">
-                                      <label for="nombre">Nombre</label>
-                                      <input type="text" name="nombre" required id="nombre" placeholder="Ej: Juan" class="form-control" autofocus>
+                                      <label for="no_serie">Número de serie:</label>
+                                      <input type="text" name="no_serie" required id="no_serie" placeholder="Ej: P-126" class="form-control" autofocus>
                                     </div>
                                     <div class="form-group">
-                                      <label for="email">Correo Electrónico</label>
-                                      <input type="email" name="email" required id="email" placeholder="Ej: juan@gmail.com" class="form-control">
+                                      <label for="marca">Marca:</label>
+                                      <input type="marca" name="marca" id="marca" placeholder="Ej: Plasma Automation" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label for="email">Tipo de Usuario</label>
-                                      <select name="tipo_usuario" required class="form-control">
-                                        <option value="ADMIN">Administrador</option>
-                                        <option value="USUARIO">Usuario</option>
-                                        <option value="DIR">Director</option>
-                                      </select>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="password">Contraseña</label>
-                                      <input type="password" name="password" required id="password" class="form-control">
+                                      <label for="modelo">Modelo:</label>
+                                      <input type="modelo" name="modelo" id="modelo" placeholder="Ej: Panther 820" class="form-control">
                                     </div>
                                     <input type="submit" name="guardar_nuevo" value="Guardar" class="btn btn-primary">
                                   </form>
@@ -116,27 +109,21 @@
                               </div>
                             </div>
                         </section>
-                         </div>
+<!Termina Formulario-->
+                  </div>
                 </div>
               </div>
             </div>
-<!--Termina Formulario-->
-<!--Modal para editar usuario-->
-      
-<!--Termina Modal de editar usuario-->                 
-            <!--Panel de consulta de usuarios-->
-            <div class="panel panel-info">
-              <div class="panel-body">
+
+            <div class="panel-body">
               <table class="table">
                 <thead>
                   <tr>
                     <th></th>
                     <th></th>
-                    <th>Nombre</th>
-                    <th>Correo Electrónico</th>
-                    <th>Tipo de Usuario</th>
-                    <th>Creado</th>
-                    <th>Estatus</th>
+                    <th>Número de serie</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>                    
                   </tr>
                 </thead>
                 <tbody>
@@ -146,18 +133,17 @@
                   $password = '';
                   $bd = 'ssp';
                   $conexion = @mysql_connect($host, $user, $password);
+                  mysql_query("SET NAMES 'utf8'");
                   @mysql_select_db($bd, $conexion);
-                  $sql = "SELECT * FROM usuario order by fecha_creacion DESC";
+                  $sql = "SELECT * FROM proyecto ORDER BY no_serie DESC";
                   $resultado = mysql_query($sql, $conexion);
-                  while ($usuario = mysql_fetch_assoc($resultado)) {
+                  while ($proyecto = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
-                    echo "<td><a href='usuarios.php?editar_usuario_id=".$usuario['id_empleado']."' class='btn btn-rounded btn-primary editar-usuario'><i class='fa fa-pencil'></i></a></td>";
-                    echo "<td><a href='usuarios.php?eliminar_usuario_id=".$usuario['id_empleado']."' class='btn btn-primary eliminar-usuario'><i class='fa fa-trash eliminar-usuario'></i></a></td>";
-                    echo "<td>".$usuario['nombre']."</td>";
-                    echo "<td>".$usuario['email']."</td>";
-                    echo "<td>".($usuario['tipo_usuario']=='ADMIN'?'Administrador':'Usuario')."</td>";
-                    echo "<td>".$usuario['fecha_creacion']."</td>";
-                    echo "<td>".($usuario['activo']==1?'Activo':'Inactivo')."</td>";
+                    echo "<td><a href='proyecto.php?editar_proyecto_id=".$proyecto['id']."' class='btn btn-rounded btn-primary editar-proyecto'><i class='fa fa-pencil'></i></a></td>";
+                    echo "<td><a href='proyecto.php?eliminar_proyecto_id=".$proyecto['id']."' class='btn btn-primary eliminar-proyecto'><i class='fa fa-trash eliminar-proyecto'></i></a></td>";
+                    echo "<td>".$proyecto['no_serie']."</td>";
+                    echo "<td>".$proyecto['marca']."</td>";
+                    echo "<td>".$proyecto['modelo']."</td>";
                     echo "</tr>";
                   }
                   function pr($var){
@@ -168,9 +154,6 @@
                 ?>
                 </tbody>
               </table>
-              </div>
-              <div class="panel-footer">Sistemas GPA</div>
-              </div>
             </div>
           </div>
         </div>
@@ -192,10 +175,11 @@
     <script src="assets/js/jquery.selectedoption.plugin.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $('.eliminar-usuario').click(function(evt){
+        $('.eliminar-personal').click(function(evt){
           evt.preventDefault();
           var url = $(this).attr('href');          
-          if(confirm("¿Estás seguro de querer eliminar este usuario?")){
+          if(confirm("¿Estás seguro de querer eliminar este proyecto
+            ?")){
             console.log(url);
             window.location.href = url;
           }

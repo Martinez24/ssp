@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Usuarios | Dashboard</title>
+    <title>Vendedor | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -52,7 +52,7 @@
       <div class="content-wrapper" id="content"> 
         <section class="content-header">
           <h1>
-            Usuarios
+            Vendedor
             <small></small>
           </h1>
         </section>
@@ -62,13 +62,13 @@
           <div class="panel">
             <div class="panel-heading">
 <!--Aplicación de modal con Bootstrap -->
-            <button class="btn btn-danger" data-toggle="modal" data-target="#miventana">Agregar usuario</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#miventana">Agregar Vendedor </button>
 <!--Breadcrumb -->
               <section class="content-header">
                 <ol class="breadcrumb">
                    <i class="fa fa-dashboard"></i>
                     <li><a href="">Home</a></li>
-                    <li class="active">Usuarios
+                    <li class="active">Vendedor
                    </li>
                 </ol>
               </section>
@@ -80,7 +80,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
                     </button>
-                    <h4>Agregar Usuario</h4>
+                    <h4>Agregar Vendedor</h4>
                   </div>
                   <div class="modal-body">
 <!--Inicia formulario de agregar usuario-->
@@ -89,26 +89,33 @@
                               <div class="panel">
                                 <div class="panel-heading"></div>
                                 <div class="panel-body">
-                                  <form method="post" action="usuarios.php" enctype="multipart/form-data" id="form">
+                                  <form method="post" action="vendedor.php" enctype="multipart/form-data" id="form">
                                     <div class="form-group">
                                       <label for="nombre">Nombre</label>
                                       <input type="text" name="nombre" required id="nombre" placeholder="Ej: Juan" class="form-control" autofocus>
                                     </div>
+                                     <select name="sucursal_id" class="form-control" required>
+                                           <?php
+                                            $host = 'localhost';
+                                            $user = 'root';
+                                            $password = '';
+                                            $bd = 'ssp';
+                                            $conexion = @mysql_connect($host, $user, $password);
+                                            @mysql_select_db($bd, $conexion);
+                                            $sql = "SELECT * FROM sucursal ORDER BY nombre";
+                                            $resultado = mysql_query($sql, $conexion);
+                                            while ($departamento = mysql_fetch_assoc($resultado)) {
+                                           echo "<option value='".$departamento['id_sucursal']."'>".$departamento['nombre']."</option>";
+                                           }
+                                          ?>                        
+                                          </select>
                                     <div class="form-group">
                                       <label for="email">Correo Electrónico</label>
                                       <input type="email" name="email" required id="email" placeholder="Ej: juan@gmail.com" class="form-control">
                                     </div>
-                                    <div class="form-group">
-                                      <label for="email">Tipo de Usuario</label>
-                                      <select name="tipo_usuario" required class="form-control">
-                                        <option value="ADMIN">Administrador</option>
-                                        <option value="USUARIO">Usuario</option>
-                                        <option value="DIR">Director</option>
-                                      </select>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="password">Contraseña</label>
-                                      <input type="password" name="password" required id="password" class="form-control">
+                                     <div class="form-group">
+                                      <label for="telefono">Telefono</label>
+                                      <input type="number" name="telefono" required id="telefono" placeholder="Ej: 4777-89-56-54" class="form-control" autofocus>
                                     </div>
                                     <input type="submit" name="guardar_nuevo" value="Guardar" class="btn btn-primary">
                                   </form>
@@ -133,10 +140,9 @@
                     <th></th>
                     <th></th>
                     <th>Nombre</th>
-                    <th>Correo Electrónico</th>
-                    <th>Tipo de Usuario</th>
-                    <th>Creado</th>
-                    <th>Estatus</th>
+                    <th>Sucursal</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -147,17 +153,16 @@
                   $bd = 'ssp';
                   $conexion = @mysql_connect($host, $user, $password);
                   @mysql_select_db($bd, $conexion);
-                  $sql = "SELECT * FROM usuario order by fecha_creacion DESC";
+                  $sql = "SELECT v.id_vendedor, v.nombre as nombre, s.id_sucursal, s.nombre as sucursal, v.correo as correo, v.telefono FROM vendedor v inner join sucursal s on s.id_sucursal = v.id_sucursal";
                   $resultado = mysql_query($sql, $conexion);
-                  while ($usuario = mysql_fetch_assoc($resultado)) {
+                  while ($vendedor = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
-                    echo "<td><a href='usuarios.php?editar_usuario_id=".$usuario['id_empleado']."' class='btn btn-rounded btn-primary editar-usuario'><i class='fa fa-pencil'></i></a></td>";
-                    echo "<td><a href='usuarios.php?eliminar_usuario_id=".$usuario['id_empleado']."' class='btn btn-primary eliminar-usuario'><i class='fa fa-trash eliminar-usuario'></i></a></td>";
-                    echo "<td>".$usuario['nombre']."</td>";
-                    echo "<td>".$usuario['email']."</td>";
-                    echo "<td>".($usuario['tipo_usuario']=='ADMIN'?'Administrador':'Usuario')."</td>";
-                    echo "<td>".$usuario['fecha_creacion']."</td>";
-                    echo "<td>".($usuario['activo']==1?'Activo':'Inactivo')."</td>";
+                    echo "<td><a href='vendedor.php?editar_vendedor_id=".$vendedor['id_vendedor']."' class='btn btn-rounded btn-primary editar-vendedor'><i class='fa fa-pencil'></i></a></td>";
+                    echo "<td><a href='vendedor.php?eliminar_vendedor_id=".$vendedor['id_vendedor']."' class='btn btn-primary eliminar-vendedor'><i class='fa fa-trash eliminar-vendedor'></i></a></td>";
+                    echo "<td>".$vendedor['nombre']."</td>";
+                    echo "<td>".$vendedor['sucursal']."</td>";
+                    echo "<td>".$vendedor['correo']."</td>";
+                    echo "<td>".$vendedor['telefono']."</td>";
                     echo "</tr>";
                   }
                   function pr($var){
