@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2017 a las 01:36:28
+-- Tiempo de generación: 19-07-2017 a las 17:21:24
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -2648,7 +2648,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fecha_creacion` date DEFAULT NULL,
   `fecha_modificacion` date DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -2656,7 +2656,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id_empleado`, `nombre`, `password`, `email`, `tipo_usuario`, `fecha_creacion`, `fecha_modificacion`, `activo`) VALUES
 (15, 'Jose Antonio Sosa', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'sosa@plasmaautomation.com.mx', 'ADMIN', '2017-07-17', '2017-07-17', 1),
-(17, 'Ana Patricia MartÃ­nez LÃ³pez', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'patrick_2102@hotmail.com', '', '2017-07-18', '2017-07-18', 1);
+(17, 'Ana Patricia MartÃ­nez LÃ³pez', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'patrick_2102@hotmail.com', '', '2017-07-18', '2017-07-18', 1),
+(19, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'ADMIN', '2017-07-19', '2017-07-19', 1);
 
 -- --------------------------------------------------------
 
@@ -2762,7 +2763,7 @@ ALTER TABLE `proyecto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --

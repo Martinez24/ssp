@@ -28,12 +28,11 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <!--<a href="#"><b>PC</b>Systems</a>-->
-        <a href="#"><img src="assets/img/gpa.png" width="150"></a>
+        <a href="#"><img class="img-responsive" src="assets/img/gpalogin.png" width="350"></a>
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Inicia sesión</p>
+              <p class="login-box-msg">Inicia sesión</p>
 
         <form action="login/sesiones.php" method="post" id="form">
           <div class="form-group has-feedback">

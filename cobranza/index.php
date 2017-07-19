@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Grupo Plasma Automation | Dashboard Conbranza</title>
+    <title>SSP | Dashboard Conbranza</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -54,7 +54,9 @@
             <div class="panel-heading text-center">
             <img class="profile-user-img img-responsive img-circle" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
                 <h3>Bienvenida</h3>
-
+           <center>
+            <img class="img-responsive" width="250" src="../assets/img/cobranza.png" alt="Conbranza">
+           </center> 
                <!-- <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>-->
     
             </div>

@@ -15,7 +15,7 @@
    
               </ul>
               <li>
-              <a href="index_cliente.php">
+              <a href="index_proforma.php">
                 <i class="fa fa-file-powerpoint-o"></i>
                 <span>Proforma</span>
               </a>
