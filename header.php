@@ -17,15 +17,15 @@
                      
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
-               <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
-                 <span class="hidden-xs"><?php echo $_SESSION['usuario']['nombre'];?></span>-->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
+                 <span class="hidden-xs"><?php echo $_SESSION['usuario']['nombre'];?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <p>
-                     <!-- <?php echo $_SESSION['usuario']['nombre'];?>
-                      <small><?php echo $_SESSION['usuario']['email'];?></small>-->
+                     <?php echo $_SESSION['usuario']['nombre'];?>
+                      <small><?php echo $_SESSION['usuario']['email'];?></small>
                     </p>
                     <h1 style="color:#ffffff;"><i class="fa fa-user"></i></h1>
                   </li>

@@ -1,4 +1,4 @@
-  <?php //include('login/validarsesion.php');?>
+  <?php include('login/validarsesion.php');?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
