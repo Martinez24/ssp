@@ -32,7 +32,7 @@
 	if(isset($_POST['guardar_edicion'])){
 		// Extraemos el contenido de la variable $_POST en variables independientes
 		extract($_POST);
-		$sql = "UPDATE proforma SET id_cliente ='$id_cliente', id_vendedor = '$id_vendedor', id_proyecto = '$id_proyecto', descripcion = '$descripcion' WHERE id_proforma = $proforma_id";
+		$sql = "UPDATE proforma SET descripcion = '$descripcion' WHERE id_proforma = $proforma_id";
 		$resultado = mysql_query($sql, $conexion);
 		if($resultado == 1)
 			header("Location: index_proforma.php");
@@ -42,7 +42,12 @@
 	if(isset($_GET['editar_proforma_id'])){
 		// Extraemos el contenido de la variable $_GET en variables independientes
 		extract($_GET);
-		$sql = "SELECT * FROM proforma WHERE id_proforma = $editar_proforma_id";
+		$sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.estatus as estatus, p.descripcion as descripcion,
+		 				c.No_Cliente,c.nombre as nombre, 
+		 					v.id_vendedor, v.nombre as vendedor, 
+		 						pr.id, pr.modelo as modelo from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join vendedor v on v.id_vendedor = p.id_vendedor 
+		 							inner join proyecto pr on pr.id = p.id_proyecto 
+										WHERE id_proforma = $editar_proforma_id";
 		$resultado = mysql_query($sql, $conexion);
 		$proforma = mysql_fetch_assoc($resultado);
 		include('editar_proforma.php');

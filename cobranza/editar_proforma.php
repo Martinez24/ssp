@@ -84,43 +84,24 @@
                   <form method="post" action="proforma.php" enctype="multipart/form-data" id="form">
                     <input type="hidden" name="proforma_id" value="<?php echo $proforma['id_proforma'];?>">
                     <div class="form-group">
-                      <label for="no_serie">Número de factura: </label>
-                      <?php echo "00".$proforma['no_factura'];?>
-                    </div>
-                    <div class="form-group">
-                      <label for="marca">Fecha inicio: </label>
-                      <?php 
-                      echo $proforma['fecha_inicio'];
-                      echo $proforma['fecha_entrega'];
+                    <b>Solo puedes realizar cambios en la descripcion de la proforma.</b>
+                      <label for="no_serie"><b>Número de factura: </b></label>
+                        <?php echo "00".$proforma['no_factura']."<br>";
+                         echo "<b>Fecha inicio:</b> ".$proforma['fecha_inicio']."<br>";
+                         echo "<b>Fecha entrega: </b>".$proforma['fecha_entrega']."<br>";
+                         echo "<b>Cliente: </b>".$proforma['nombre']."<br>";
+                         echo "<b>Vendedor: </b>".$proforma['vendedor']."<br>";
+                         echo "<b>Proyecto: </b>".$proforma['modelo'];
                       ?>
-
+                      
                     </div>
+                     <div class="form-group">
+                        <label class="col-lg-2 control-label">Descripción:</label>
+                        <textarea name="descripcion" value="" rows="10" cols="30" class="form-control"> 
+                        <?php echo $proforma['descripcion'];?>
+                        </textarea>
+                        </div>
 
-                   <div class="form-group">
-                        <label for="id_cliente">Cliente: </label>
-                      <select name="id_cliente" class="form-control">
-                        <?php
-                          $sql = "SELECT * FROM cliente";
-                          $resultado = mysql_query($sql, $conexion);
-                          while ($cliente = mysql_fetch_assoc($resultado)) {
-                          echo "<option value='".$cliente['No_Cliente']."'>".$cliente['nombre']."</option>";
-                          }
-                        ?>
-                      </select>
-                  </div>   
-                   <div class="form-group">
-                        <label for="id_vendedor">Vendedor: </label>
-                      <select name="id_vendedor" class="form-control">
-                        <?php
-                          $sql = "SELECT * FROM vendedor";
-                          $resultado = mysql_query($sql, $conexion);
-                          while ($vendedor = mysql_fetch_assoc($resultado)) {
-                          echo "<option value='".$vendedor['id_vendedor']."'>".$vendedor['nombre']."</option>";
-                          }
-                        ?>
-                      </select>
-                  </div>                           
-            
                    <input type="submit" name="guardar_edicion" value="Guardar" class="btn btn-primary">
 
                   </form>

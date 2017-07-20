@@ -19,7 +19,12 @@
 		$sql = "INSERT INTO cliente(nombre, domicilio, id_estado, id_municipio, rfc, correo, telefono, c_p) VALUES( '$nombre', '$domicilio', '$estado', '$municipio', '$rfc', '$correo', '$telefono', '$c_p')";
 		$resultado = mysql_query($sql, $conexion);
 		if($resultado == 1)
-			header("Location: index_cliente.php");
+				header("Location: index_cliente.php");
+		else 
+			echo '<script language="javascript">
+        alert("Intentalo de nuevo, Nombre, RFC o correo ya existentes.")
+        window.location.href="index_cliente.php";
+          </script>';
 		exit;
 	}
 	// Comprueba la existencia de una peticion post que corresponda al nombre guardar_edicion

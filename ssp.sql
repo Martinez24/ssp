@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2017 a las 17:21:24
+-- Tiempo de generación: 21-07-2017 a las 01:25:37
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `correo` varchar(30) NOT NULL,
   `telefono` int(15) NOT NULL,
   `c_p` int(8) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 
 INSERT INTO `cliente` (`No_Cliente`, `nombre`, `domicilio`, `id_estado`, `id_municipio`, `rfc`, `correo`, `telefono`, `c_p`) VALUES
 (2, 'as', 'as', 0, '', 'kj88h291', 'm@m.c', 7896523, 2),
-(4, 'Plasticos S.A. de CV.', 'Margaros #123, La industrial.', 12, '0', 'asdfgt678', 'plasticos@plasticos.com', 2147483647, 37670),
-(5, 'Metal S.A. de C.V', 'Miraflores #456, Aguacate', 19, 'Galeana ', '1psosld', 'aguacate@aguatacate.com', 789453202, 37562);
+(5, 'Metal S.A. de C.V', 'Miraflores #456, Aguacate', 19, 'Galeana ', '1psosld', 'aguacate@aguatacate.com', 789453202, 37562),
+(6, 'Automation Systems G.J.', '27 A Norte  #155, San Alejandro', 21, 'PUEBLA ', 'ASG110228H40', 'ernesto.gonzalez@automationsys', 2147483647, 72090);
 
 -- --------------------------------------------------------
 
@@ -2582,14 +2582,26 @@ INSERT INTO `municipios` (`id_municipio`, `nombre_municipio`, `estado`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `proforma` (
-  `no_proforma` int(4) NOT NULL,
+  `id_proforma` int(11) NOT NULL,
+  `no_factura` int(4) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `id_cliente` int(4) NOT NULL,
   `id_vendedor` int(4) NOT NULL,
   `fecha_entrega` date NOT NULL,
   `id_proyecto` int(4) NOT NULL,
-  `descripcion` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `descripcion` varchar(250) NOT NULL,
+  `estatus` int(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `proforma`
+--
+
+INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
+(1, 86, '2017-12-31', 5, 12, '2018-01-30', 2, 'DescripciÃ³n del proyecto\n                       				 ', 1),
+(2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 0),
+(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, ' \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-image.jpg        \r\nAnother ', 1),
+(4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				 ', 1);
 
 -- --------------------------------------------------------
 
@@ -2602,14 +2614,15 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `no_serie` varchar(8) NOT NULL,
   `marca` varchar(20) NOT NULL,
   `modelo` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proyecto`
 --
 
 INSERT INTO `proyecto` (`id`, `no_serie`, `marca`, `modelo`) VALUES
-(2, 'P-123', 'CIMSA', 'Panther 820');
+(2, 'P-123', 'CIMSA', 'Panther 820'),
+(3, 'P-126', 'Azimatronics', 'Bird Cut');
 
 -- --------------------------------------------------------
 
@@ -2671,14 +2684,15 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `id_sucursal` int(1) NOT NULL,
   `correo` varchar(25) NOT NULL,
   `telefono` int(12) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `vendedor`
 --
 
 INSERT INTO `vendedor` (`id_vendedor`, `nombre`, `id_sucursal`, `correo`, `telefono`) VALUES
-(12, 'Ana Patricia MartÃ­nez LÃ³pez', 1, 'patrick_2102@hotmail.com', 2147483647);
+(12, 'Ana Patricia MartÃ­nez LÃ³pez', 1, 'patrick_2102@hotmail.com', 2147483647),
+(13, 'Jose Antonio Sosa', 1, 'sosa@plasmaautomation.com', 2147483647);
 
 --
 -- Índices para tablas volcadas
@@ -2688,7 +2702,10 @@ INSERT INTO `vendedor` (`id_vendedor`, `nombre`, `id_sucursal`, `correo`, `telef
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`No_Cliente`);
+  ADD PRIMARY KEY (`No_Cliente`),
+  ADD UNIQUE KEY `nombre` (`nombre`),
+  ADD UNIQUE KEY `rfc` (`rfc`),
+  ADD UNIQUE KEY `correo` (`correo`);
 
 --
 -- Indices de la tabla `estado`
@@ -2706,7 +2723,7 @@ ALTER TABLE `municipios`
 -- Indices de la tabla `proforma`
 --
 ALTER TABLE `proforma`
-  ADD PRIMARY KEY (`no_proforma`);
+  ADD PRIMARY KEY (`id_proforma`);
 
 --
 -- Indices de la tabla `proyecto`
@@ -2743,7 +2760,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -2755,10 +2772,15 @@ ALTER TABLE `estado`
 ALTER TABLE `municipios`
   MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2578;
 --
+-- AUTO_INCREMENT de la tabla `proforma`
+--
+ALTER TABLE `proforma`
+  MODIFY `id_proforma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -2768,7 +2790,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `vendedor`
 --
 ALTER TABLE `vendedor`
-  MODIFY `id_vendedor` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id_vendedor` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
