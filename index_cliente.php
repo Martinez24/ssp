@@ -89,7 +89,11 @@
                                 <div class="panel-heading"></div>
                                 <div class="panel-body">
                                   <form method="post" action="clientes.php" enctype="multipart/form-data" id="form">
-                      
+                                    <div class="form-group">
+                                      <label for="nu_serie"> Número del cliente</label>
+                                      <input type="text" name="nu_serie" required id="nu_serie" placeholder="Ej: 01759" class="form-control" autofocus>
+                                    </div>
+
                                     <div class="form-group">
                                       <label for="nombre">Nombre del cliente</label>
                                       <input type="text" name="nombre" required id="nombre" placeholder="Ej: Plastics S.A. de C.V." class="form-control" autofocus>
@@ -170,13 +174,13 @@
                   $conexion = @mysql_connect($host, $user, $password);
                   mysql_query("SET NAMES 'utf8'");
                   @mysql_select_db($bd, $conexion);
-                  $sql = "SELECT c.No_cliente as NoCliente , c.nombre as nombre, c.domicilio as Direccion, c.correo as Correo, e.id_estado, e.estado as Estado, c.id_municipio as Ciudad, c.rfc as RFC, c.telefono as Telefono, c.c_p as C_P FROM cliente c inner join estado e on e.id_estado = c.id_estado";
+                  $sql = "SELECT c.No_cliente as NoCliente, c.nu_cliente as nu_serie, c.nombre as nombre, c.domicilio as Direccion, c.correo as Correo, e.id_estado, e.estado as Estado, c.id_municipio as Ciudad, c.rfc as RFC, c.telefono as Telefono, c.c_p as C_P FROM cliente c inner join estado e on e.id_estado = c.id_estado";
                   $resultado = mysql_query($sql, $conexion);
                   while ($cliente = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
                     //echo "<td><a href='clientes.php?editar_cliente_id=".$cliente['NoCliente']."' class='btn btn-rounded btn-primary editar-cliente'><i class='fa fa-pencil'></i></a></td>";
                     echo "<td><a href='clientes.php?eliminar_cliente_id=".$cliente['NoCliente']."' class='btn btn-primary eliminar-cliente'><i class='fa fa-trash eliminar-cliente'></i></a></td>";
-                    echo "<td>".$cliente['NoCliente']."</td>";
+                    echo "<td>"."CL00".$cliente['nu_serie']."</td>";
                     echo "<td>".$cliente['nombre']."</td>";
                     echo "<td>".($cliente['Direccion'])."</td>";
                     echo "<td>".($cliente['Estado'])."</td>";

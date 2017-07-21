@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2017 a las 01:25:37
+-- Tiempo de generación: 22-07-2017 a las 01:07:42
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `cliente` (
   `No_Cliente` int(10) NOT NULL,
+  `nu_cliente` int(11) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `domicilio` varchar(70) NOT NULL,
   `id_estado` int(2) NOT NULL,
@@ -42,10 +43,10 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`No_Cliente`, `nombre`, `domicilio`, `id_estado`, `id_municipio`, `rfc`, `correo`, `telefono`, `c_p`) VALUES
-(2, 'as', 'as', 0, '', 'kj88h291', 'm@m.c', 7896523, 2),
-(5, 'Metal S.A. de C.V', 'Miraflores #456, Aguacate', 19, 'Galeana ', '1psosld', 'aguacate@aguatacate.com', 789453202, 37562),
-(6, 'Automation Systems G.J.', '27 A Norte  #155, San Alejandro', 21, 'PUEBLA ', 'ASG110228H40', 'ernesto.gonzalez@automationsys', 2147483647, 72090);
+INSERT INTO `cliente` (`No_Cliente`, `nu_cliente`, `nombre`, `domicilio`, `id_estado`, `id_municipio`, `rfc`, `correo`, `telefono`, `c_p`) VALUES
+(2, 0, 'as', 'as', 0, '', 'kj88h291', 'm@m.c', 7896523, 2),
+(5, 0, 'Metal S.A. de C.V', 'Miraflores #456, Aguacate', 19, 'Galeana ', '1psosld', 'aguacate@aguatacate.com', 789453202, 37562),
+(6, 1759, 'Automation Systems G.J.', '27 A Norte  #155, San Alejandro', 21, 'PUEBLA ', 'ASG110228H40', 'ernesto.gonzalez@automationsys', 2147483647, 72090);
 
 -- --------------------------------------------------------
 
@@ -2600,8 +2601,8 @@ CREATE TABLE IF NOT EXISTS `proforma` (
 INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
 (1, 86, '2017-12-31', 5, 12, '2018-01-30', 2, 'DescripciÃ³n del proyecto\n                       				 ', 1),
 (2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 0),
-(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, ' \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-image.jpg        \r\nAnother ', 1),
-(4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				 ', 1);
+(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, '\r\n                         \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-i', 1),
+(4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				                         ', 1);
 
 -- --------------------------------------------------------
 

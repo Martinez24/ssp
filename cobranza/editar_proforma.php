@@ -92,12 +92,11 @@
                          echo "<b>Cliente: </b>".$proforma['nombre']."<br>";
                          echo "<b>Vendedor: </b>".$proforma['vendedor']."<br>";
                          echo "<b>Proyecto: </b>".$proforma['modelo'];
-                      ?>
-                      
+                      ?>                      
                     </div>
                      <div class="form-group">
                         <label class="col-lg-2 control-label">Descripción:</label>
-                        <textarea name="descripcion" value="" rows="10" cols="30" class="form-control"> 
+                        <textarea name="descripcion" value="" required  rows="10" cols="30" class="form-control"> 
                         <?php echo $proforma['descripcion'];?>
                         </textarea>
                         </div>

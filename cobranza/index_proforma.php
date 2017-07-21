@@ -196,9 +196,9 @@
                   $resultado = mysql_query($sql, $conexion);
                   while ($proforma = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
-                     echo "<td><a href='proforma.php?consultar_proforma_id=".$proforma['id_proforma']."' class='btn btn-primary consultar-proforma'><i title='Ver más' class='fa fa-search consultar-proforma'></i></a></td>";
+                     echo "<td><a href='consultas.php?ver_proforma_id=".$proforma['id_proforma']."' class='btn btn-rounded btn-primary ver-proyecto' title='Ver proyecto' ><i class='fa fa-plus'></i></a></td>";
                     echo "<td><a href='proforma.php?editar_proforma_id=".$proforma['id_proforma']."' class='btn btn-rounded btn-primary editar-proforma'><i  title='Editar proforma' class='fa fa-pencil'></i></a></td>";
-                    echo "<td><a href='proforma.php?eliminar_proforma_id=".$proforma['id_proforma']."' class='btn btn-primary eliminar-proforma'><i title='Desactivar proforma' class='fa fa-remove eliminar-proforma'></i></a></td>";
+                   echo "<td><a href='proforma.php?eliminar_proforma_id=".$proforma['id_proforma']."' class='btn btn-primary eliminar-proforma'><i title='Desactivar proforma' class='fa fa-remove eliminar-proforma'></i></a></td>";
                     echo "<td>00".$proforma['no_factura']."</td>";
                     echo "<td>".$proforma['fecha_inicio']."</td>";
                     echo "<td>".$proforma['nombre']."</td>";
