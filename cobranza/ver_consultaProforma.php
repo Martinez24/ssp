@@ -58,10 +58,10 @@
         <!-- Main content -->
         <section class="invoice">
           <!-- title row -->
-          <a href="sqlGestion.php?imprimir=<?php echo $proforma['id_proyecto']; ?>" class="btn btn-success pull-right"><i class="fa fa-print"></i> Imprimir tarea</a>
+          <a href="sqlProforma.php?imprimir=<?php echo $proforma1['id_proforma']; ?>" class="btn btn-success pull-right"><i class="fa fa-print"></i> Imprimir Proforma</a>
           <div class="row">
               <img src="../assets/img/plasma.PNG" width="350">
-              <center><h4>FACTURA PROFORMA PROYECTOS</h4></center>
+              <center><h4>PROFORMA PROYECTOS</h4></center>
             <div class="col-xs-12">
               <h2 class="page-header">
                 <i class="fa fa-file-text"></i> No. de Factura: <?php echo "00".$proforma1['no_factura'];?>
@@ -76,31 +76,46 @@
                 <thead>
                   <tr>
                   <h5>Venta para:</h5>
-                    <th>Nombre</th>
+                  <h6><B>No. de cliente: </B>
+                    <?php echo "CL00".$proforma1['numero']; ?></h6>
+                    <th>Nombre:</th>
                     <th>Domicilio</th>
                     <!--Eastado, municipio y cp van juntos en una columna-->
                     <th>Ciudad</th>
                     <th>RFC</th>
-                    <th>Destino</th>
-                    <th>Fecha de Entrega</th>                    
-                    <th>Fecha de Creación</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>                    
                   </tr>
                 </thead>
                 <tbody>
                 <?php
                     echo "<tr>";
-                    echo "<td>".$proforma1['modelo']."</td>";
-                    echo "<td>".$proforma['nombre']."</td>";
-                    echo "<td>".$tarea['maquina']."</td>";
-                    echo "<td>".$tarea['nombre']."</td>";
-                    echo "<td>".$tarea['destino']."</td>";
-                    echo "<td>".$tarea['fecha_entrega']."</td>";
-                    echo "<td>".$tarea['fecha_creacion']."</td>";
+                    echo "<td>".$proforma1['nombre_cliente']."</td>";
+                    echo "<td>".$proforma1['domicilio']."</td>";
+                    echo "<td>".$proforma1['estado'].", ".$proforma1['municipio'].", C.P. ".$proforma1['cp']."</td>";
+                    echo "<td>".$proforma1['rfc']."</td>";
+                    echo "<td>".$proforma1['correo']."</td>";
+                    echo "<td>".$proforma1['telefono']."</td>";
                     echo "</tr>";
                  
                 ?>
                 </tbody>
+                  <tr>
+                  <th>Vendedor: </th>
+                  <th>Fecha de entrega</th>
+                  <th>Serie</th>
+                  </tr>
+                  <tbody>
+                  <?php
+                    echo "<tr>";
+                    echo "<td>".$proforma1['vendedor']."</td>";
+                    echo "<td>".$proforma1['fecha_entrega']."</td>";
+                    echo "<td>".$proforma1['numero_serie']."</td>";
+                    echo "</tr>";
+                    ?>
+                  </tbody>
               </table>
+
             </div>
             <!--<div class="col-sm-4 invoice-col">
               <h5>Vendedor:</h5>
@@ -112,47 +127,24 @@
           <!-- Table row -->
           <div class="row">
             <div class="col-xs-12 table-responsive">
-              <h5>Departamentos relacionados al proyecto</h5>
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                <th>Usuario</th>
-                  <th>Estado del departamento</th>
-                  <th>Observación</th>
-                  <th>Fecha de inicio del proyecto</th>
-                  <th>Fecha de entrega del proyecto</th>
-                  <th>Nueva fecha de entrega
-                  <th>Área involucrada</th>
-                  <th>Personal en cargo</th>
-                  <th>Identificador del proyecto</th>
-                </tr>
-                </thead>
-                <tbody>
+              <tr>
+                  <h5>Descripción:</h5>
+                  <table class="table">
+                    <th>Marca</th>
+                    <th>Modelo</th>
+              </tr>
+                  <tbody>
                   <?php
-                  $prioridad_color = array(   
-                   'Retraso' => '#FFEE58',   
-                   'Tiempo' => '#B2FF59'  
-                     );
-                    if(count($proyectos) > 0){
-                      foreach ($proyectos as $index => $proyecto) {
-                      echo "<tr bgcolor=' ".$prioridad_color[$proyecto['status']]."'>";
-                      echo "<td>".$proyecto['usuario']."</td>";
-                      echo "<td>".$proyecto['status']."</td>";
-                      echo "<td>".$proyecto['observacion']."</td>";
-                      echo "<td>".$proyecto['fecha_inicio']."</td>";
-                      echo "<td>".$proyecto['fecha_entrega']."</td>";
-                      echo "<td>".$proyecto['fecha_reprogramada']."</td>";
-                      echo "<td>".$proyecto['departamento']."</td>";
-                      echo "<td>".$proyecto['personal']."</td>";
-                      echo "<td>".$proyecto['proyecto']."</td>";
-                      echo "</tr>";
-                      }
-                    } else {
-                      echo "<tr><td><span>No hay departamentos agregados</span></td></tr>";
-                    }                    
+                    echo "<td>".$proforma1['marca']."</td>";
+                    echo "<td>".$proforma1['modelo']."</td>";
                   ?>
-                </tbody>
-              </table>
+                  </tbody>
+                  <th>Descripción</th>
+                  <?php
+                  echo "<td>".$proforma1['descripcion']."</td>";
+                  ?>
+
+                  </table>
             </div>
             <!-- /.col -->
           </div>
