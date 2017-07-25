@@ -22,7 +22,7 @@
             </li>
             </li>
             <li class="treeview">
-              <a href="index_usuarios.php">
+              <a href="index_cobro.php">
                 <i class="fa fa-money"></i> 
                 <span>Cobros</span>
               </a>

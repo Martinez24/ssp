@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2017 a las 01:07:42
+-- Tiempo de generación: 26-07-2017 a las 01:39:42
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -47,6 +47,26 @@ INSERT INTO `cliente` (`No_Cliente`, `nu_cliente`, `nombre`, `domicilio`, `id_es
 (2, 0, 'as', 'as', 0, '', 'kj88h291', 'm@m.c', 7896523, 2),
 (5, 0, 'Metal S.A. de C.V', 'Miraflores #456, Aguacate', 19, 'Galeana ', '1psosld', 'aguacate@aguatacate.com', 789453202, 37562),
 (6, 1759, 'Automation Systems G.J.', '27 A Norte  #155, San Alejandro', 21, 'PUEBLA ', 'ASG110228H40', 'ernesto.gonzalez@automationsys', 2147483647, 72090);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cobro`
+--
+
+CREATE TABLE IF NOT EXISTS `cobro` (
+  `id_cobro` int(11) NOT NULL,
+  `porcentaje` varchar(4) NOT NULL,
+  `id_proforma` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cobro`
+--
+
+INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`) VALUES
+(1, '50%', 4),
+(2, '20%', 1);
 
 -- --------------------------------------------------------
 
@@ -2709,6 +2729,12 @@ ALTER TABLE `cliente`
   ADD UNIQUE KEY `correo` (`correo`);
 
 --
+-- Indices de la tabla `cobro`
+--
+ALTER TABLE `cobro`
+  ADD PRIMARY KEY (`id_cobro`);
+
+--
 -- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
@@ -2762,6 +2788,11 @@ ALTER TABLE `vendedor`
 --
 ALTER TABLE `cliente`
   MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `cobro`
+--
+ALTER TABLE `cobro`
+  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
