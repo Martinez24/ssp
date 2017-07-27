@@ -38,12 +38,6 @@
                 <span>Vendedores</span>
               </a>
             </li>
-            <li>
-              <a href="">
-                <i class="fa fa-file-powerpoint-o"></i>
-                <span>Consultar Proforma</span>
-              </a>
-            </li>
             
           </ul>
         </section>

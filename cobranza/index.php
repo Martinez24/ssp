@@ -1,4 +1,4 @@
-<?php //include('login/validarsesion.php');?>
+<?php include('../login/validarsesion.php');?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -53,11 +53,12 @@
 
             <div class="panel-heading text-center">
             <img class="profile-user-img img-responsive img-circle" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
+            <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>
                 <h3>Bienvenida</h3>
            <center>
             <img class="img-responsive" width="250" src="../assets/img/cobranza.png" alt="Conbranza">
            </center> 
-               <!-- <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>-->
+               
     
             </div>
             <div class="panel-footer"></div>

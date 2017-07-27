@@ -17,15 +17,15 @@
                      
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
-               <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
-                 <span class="hidden-xs"><?php echo $_SESSION['usuario']['nombre'];?></span>-->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
+                 <span class="hidden-xs"><?php echo "User: ".$_SESSION['usuario']['nombre'];?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <p>
-                     <!-- <?php echo $_SESSION['usuario']['nombre'];?>
-                      <small><?php echo $_SESSION['usuario']['email'];?></small>-->
+                     <?php echo $_SESSION['usuario']['nombre'];?>
+                      <small><?php echo $_SESSION['usuario']['email'];?></small>
                     </p>
                     <h1 style="color:#ffffff;"><i class="fa fa-user"></i></h1>
                   </li>
@@ -35,7 +35,7 @@
                       <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
                     </div>
                     <div class="pull-right">
-                      <a href="login/sesiones.php?cerrar-sesion" class="btn btn-default btn-flat">Cerrar sesión <i class="fa fa-power-off"></i></a>
+                      <a href="../login/sesiones.php?cerrar-sesion" class="btn btn-default btn-flat">Cerrar sesión <i class="fa fa-power-off"></i></a>
                     </div>
                   </li>
                 </ul>

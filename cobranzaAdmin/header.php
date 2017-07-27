@@ -35,7 +35,7 @@
                       <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
                     </div>
                     <div class="pull-right">
-                      <a href="login/sesiones.php?cerrar-sesion" class="btn btn-default btn-flat">Cerrar sesión <i class="fa fa-power-off"></i></a>
+                      <a href="../login/sesiones.php?cerrar-sesion" class="btn btn-default btn-flat">Cerrar sesión <i class="fa fa-power-off"></i></a>
                     </div>
                   </li>
                 </ul>

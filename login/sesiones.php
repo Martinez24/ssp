@@ -44,11 +44,11 @@ e<?php
 	    	// Finalmente redireccionamos el index de administrador
 	    	header('Location: ../index.php');
 
-	    	}if($tupla['tipo_usuario']=='INGE'){
+	    	}if($tupla['tipo_usuario']=='COBRANZA'){
 	    
 	    	$_SESSION['usuario'] = $user;
 	    	// Finalmente redireccionamos el index de los usuarios
-	    	header('Location: ../usuario/index.php');
+	    	header('Location: ../cobranza/index.php');
 
 	   		 }elseif($tupla['tipo_usuario']=='DIR'){
 	    	$_SESSION['usuario'] = $user;

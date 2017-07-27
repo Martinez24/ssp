@@ -1,4 +1,4 @@
-<?php include('../login/validarsesion.php');?>
+<?php //include('login/validarsesion.php');?>
 <!--Conexion a la base de datos -->
  <?php
   $host = 'localhost';

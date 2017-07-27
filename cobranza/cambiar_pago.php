@@ -14,7 +14,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Editar | Proforma </title>
+    <title>Editar | Pago </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -62,15 +62,15 @@
                 <ol class="breadcrumb">
                    <i class="fa fa-dashboard"></i>
                     <li><a href="">Home</a></li>
-                    <li>Proforma</li>
-                    <li class="active">Editar Proforma</li>
+                    <li>Cobros</li>
+                    <li class="active">Editar Pago</li>
                 </ol>
               </section>
 <!--Termina breadcrumb.-->
         <section class="content-header">
           <h1>
             Editar
-            <small> proforma</small>
+            <small> pago</small>
           </h1>
         </section>
 <section class="content">
@@ -81,29 +81,29 @@
                 <div class="panel-heading"></div>
                 <div class="panel-body">
 <!--Inicia el formulario para editar la proforma-->
-                  <form method="post" action="proforma.php" enctype="multipart/form-data" id="form">
-                    <input type="hidden" name="proforma_id" value="<?php echo $proforma['id_proforma'];?>">
+                  <form method="post" action="cobros.php" enctype="multipart/form-data" id="form">
+                    <input type="hidden" name="cobro_id" value="<?php echo $proyecto['id_cobro'];?>">
                     <div class="form-group">
-                    <b>Solo puedes realizar cambios en la descripcion de la proforma.</b>
+                    <div>
+                      
+                    </div>
+                  <h4>Información del proyecto</h4>
                       <label for="no_serie"><b>Número de factura: </b></label>
-                        <?php echo "00".$proforma['no_factura']."<br>";
-                         echo "<b>Fecha inicio:</b> ".$proforma['fecha_inicio']."<br>";
-                         echo "<b>Fecha entrega: </b>".$proforma['fecha_entrega']."<br>";
-                         echo "<b>Cliente: </b>".$proforma['nombre']."<br>";
-                         echo "<b>Vendedor: </b>".$proforma['vendedor']."<br>";
-                         echo "<b>Proyecto: </b>".$proforma['modelo'];
+                        <?php echo "00".$proyecto['no_factura']."<br>";
+                         echo "<b>Fecha inicio:</b> ".$proyecto['fecha_inicio']."<br>";
+                         echo "<b>Fecha entrega: </b>".$proyecto['fecha_entrega']."<br>";
+                         echo "<b>Cliente: </b>".$proyecto['nombre']."<br>";
+                         echo "<b>Vendedor: </b>".$proyecto['vendedor']."<br>";
+                         echo "<b>Proyecto: </b>".$proyecto['modelo']."<br>";
+                         echo "<b>Porcentaje de pago actual: </b><br><td><h5><small class='pull-right'>".$proyecto['porcentaje'].'%'."</small></h5><div class='progress xs'><div class='progress-bar progress-bar-green' style='width:".$proyecto['porcentaje'].'%'."'' role='progress-bar' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100'></div></div></td>";
                       ?>                      
                     </div>
-                     <div class="form-group">
-                        <label class="col-lg-2 control-label">Descripción:</label>
-                        <textarea name="descripcion" value="" required  rows="10" cols="30" class="form-control"> 
-                        <?php echo $proforma['descripcion'];?>
-                        </textarea>
-                        </div>
-
-                   <input type="submit" name="guardar_edicion" value="Guardar" class="btn btn-primary">
-
-                  </form>
+                    <div class="form-data">
+                    <h4><label>Nuevo pago</label></h4>
+                      <input type="number" name="porcentaje" class="form-control" required>
+                    </div><br>
+                    <input type="submit" name="guardar_edicion" value="Guardar Pago" class="btn btn-primary">
+                    </form>
                 </div>
               </div>
               </div>
@@ -127,5 +127,8 @@
     <script src="../assets/dist/js/demo.js"></script>
     <script src="../assets/js/jquery.selectedoption.plugin.js"></script>
     <script src="../assets/js/parsley.js"></script>
+     <script type="text/javascript">
+     
+    </script>
   </body>
 </html>

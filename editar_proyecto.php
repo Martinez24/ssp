@@ -110,5 +110,6 @@
     <script src="assets/dist/js/demo.js"></script>
     <script src="assets/js/jquery.selectedoption.plugin.js"></script>
     <script src="assets/js/parsley.js"></script>
+   
   </body>
 </html>
