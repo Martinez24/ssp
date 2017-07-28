@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-07-2017 a las 01:39:42
+-- Tiempo de generación: 29-07-2017 a las 01:24:11
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `correo` varchar(30) NOT NULL,
   `telefono` int(15) NOT NULL,
   `c_p` int(8) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -56,17 +56,17 @@ INSERT INTO `cliente` (`No_Cliente`, `nu_cliente`, `nombre`, `domicilio`, `id_es
 
 CREATE TABLE IF NOT EXISTS `cobro` (
   `id_cobro` int(11) NOT NULL,
-  `porcentaje` varchar(4) NOT NULL,
+  `porcentaje` int(3) NOT NULL,
   `id_proforma` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cobro`
 --
 
 INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`) VALUES
-(1, '50%', 4),
-(2, '20%', 1);
+(16, 100, 1),
+(18, 100, 2);
 
 -- --------------------------------------------------------
 
@@ -2620,8 +2620,8 @@ CREATE TABLE IF NOT EXISTS `proforma` (
 
 INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
 (1, 86, '2017-12-31', 5, 12, '2018-01-30', 2, 'DescripciÃ³n del proyecto\n                       				 ', 1),
-(2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 0),
-(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, '\r\n                         \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-i', 1),
+(2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
+(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, '\r\n                         \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-i', 0),
 (4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				                         ', 1);
 
 -- --------------------------------------------------------
@@ -2682,7 +2682,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fecha_creacion` date DEFAULT NULL,
   `fecha_modificacion` date DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -2691,7 +2691,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`id_empleado`, `nombre`, `password`, `email`, `tipo_usuario`, `fecha_creacion`, `fecha_modificacion`, `activo`) VALUES
 (15, 'Jose Antonio Sosa', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'sosa@plasmaautomation.com.mx', 'ADMIN', '2017-07-17', '2017-07-17', 1),
 (17, 'Ana Patricia MartÃ­nez LÃ³pez', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'patrick_2102@hotmail.com', '', '2017-07-18', '2017-07-18', 1),
-(19, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'ADMIN', '2017-07-19', '2017-07-19', 1);
+(19, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'ADMIN', '2017-07-19', '2017-07-19', 1),
+(20, 'Rosario Valle', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'rosario@plasmaautomation.com.mx', 'COBRANZA', '2017-07-27', '2017-07-27', 1);
 
 -- --------------------------------------------------------
 
@@ -2732,7 +2733,8 @@ ALTER TABLE `cliente`
 -- Indices de la tabla `cobro`
 --
 ALTER TABLE `cobro`
-  ADD PRIMARY KEY (`id_cobro`);
+  ADD PRIMARY KEY (`id_cobro`),
+  ADD UNIQUE KEY `id_proforma` (`id_proforma`);
 
 --
 -- Indices de la tabla `estado`
@@ -2787,12 +2789,12 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `cobro`
 --
 ALTER TABLE `cobro`
-  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -2817,7 +2819,7 @@ ALTER TABLE `proyecto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --

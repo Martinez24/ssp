@@ -16,8 +16,25 @@
 	if(isset($_POST['guardar_nuevo'])){
 		// Extraemos el contenido de la variable $_POST en variables independientes
 		extract($_POST);
+		if($porcentaje >= 101){
+			echo '<script language="javascript">
+      			alert("Error! El pago excedio el 100%")
+        		window.location.href="index_cobro.php";
+         		 </script>';         		
+  		}else{
 		$sql = "INSERT INTO cobro (porcentaje, id_proforma) VALUES ($porcentaje, $proforma_id)";
-		$resultado = mysql_query($sql, $conexion);
+		$resultado = mysql_query($sql, $conexion);	
+			if($porcentaje == 100)
+			{
+				$sql = "UPDATE proforma SET estatus = 0 WHERE id_proforma = $proforma_id ";
+				$ide_pro = $proforma_id;
+				$resultado = mysql_query($sql, $conexion);
+				echo '<script languaje="javascript">
+						alert("Se actualizado el estado del proyecto a vendido")
+						window.location.href="index_cobro.php";
+						</script>';
+			}
+		}
 		if($resultado == 1)
 			header("Location: index_cobro.php");	
 		else 
@@ -35,14 +52,22 @@
 		$resultado = mysql_query($suma, $conexion);
 		$suma = mysql_fetch_assoc($resultado);
 		$sumRes = $suma['suma'];
-		if ($sumRes >= 100 ){
+		if ($sumRes >= 101 ){
 			echo '<script language="javascript">
       		alert("El pago excedio el 100%, intente de nuevo")
         	window.location.href="index_cobro.php";
           	</script>';
 		}else{
 		$sql = "UPDATE cobro SET porcentaje = $sumRes WHERE id_cobro = $cobro_id";
-		$resultado = mysql_query($sql, $conexion);	
+			$resultado = mysql_query($sql, $conexion);	
+				if($sumRes == 100){
+					$estatus = "UPDATE proforma SET estatus = 0 WHERE id_proforma = "'.$proyecto['id_proforma']."'";
+						$res = mysql_query($estatus, $conexion);
+						echo '<script languaje="javascript">
+						alert("Se actualizado el estado del proyecto a vendido")
+						window.location.href="index_cobro.php";
+						</script>';
+				}
 		if($resultado == 1)
 			header("Location: index_cobro.php");
 		exit;
@@ -64,6 +89,9 @@
 		$resultado = mysql_query($sql, $conexion);
 		$proyecto = mysql_fetch_assoc($resultado);
 		include('cambiar_pago.php');
+		$prof = $proyecto['id_proforma'];
+		echo $prof;
+		exit();
 	}
 	// Se comprueba la existencia de la petición get que corresponde al nombre eliminar_marca_i
 	function pr($var){

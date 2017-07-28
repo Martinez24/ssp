@@ -144,7 +144,7 @@
                 </thead>
                 <tbody>
                 <?php
-                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, c.No_Cliente, p.estatus as estatus, c.nombre as nombre, co.id_cobro, co.porcentaje as porcentaje from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join cobro co on co.id_proforma = p.id_proforma WHERE estatus = 1 ORDER BY no_factura DESC";
+                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, c.No_Cliente, p.estatus as estatus, c.nombre as nombre, co.id_cobro, co.porcentaje as porcentaje from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join cobro co on co.id_proforma = p.id_proforma  ORDER BY no_factura DESC";
                   $resultado = mysql_query($sql, $conexion);
                   while ($proforma = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
