@@ -46,7 +46,7 @@
     //Creamos una variables para guardar en un arreglo el resultado de la consulta
     $sumRes = $suma['suma'];
     // Si el resultado es mayor a 101 regresa no permite la actualización de los datos
-    if ($sumRes >= 101 ){
+    if ($sumRes > 101 ){
       echo '<script language="javascript">
           alert("El pago excedio el 100%, intente de nuevo")
           window.location.href="index_cobro.php";
