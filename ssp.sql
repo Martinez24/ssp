@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2017 a las 01:24:11
+-- Tiempo de generación: 02-08-2017 a las 23:54:39
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -57,16 +57,18 @@ INSERT INTO `cliente` (`No_Cliente`, `nu_cliente`, `nombre`, `domicilio`, `id_es
 CREATE TABLE IF NOT EXISTS `cobro` (
   `id_cobro` int(11) NOT NULL,
   `porcentaje` int(3) NOT NULL,
-  `id_proforma` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  `id_proforma` int(11) NOT NULL,
+  `estatus` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cobro`
 --
 
-INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`) VALUES
-(16, 100, 1),
-(18, 100, 2);
+INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`, `estatus`) VALUES
+(34, 100, 1, 0),
+(36, 100, 2, 0),
+(38, 100, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -2610,19 +2612,18 @@ CREATE TABLE IF NOT EXISTS `proforma` (
   `id_vendedor` int(4) NOT NULL,
   `fecha_entrega` date NOT NULL,
   `id_proyecto` int(4) NOT NULL,
-  `descripcion` varchar(250) NOT NULL,
-  `estatus` int(1) NOT NULL
+  `descripcion` varchar(250) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proforma`
 --
 
-INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
-(1, 86, '2017-12-31', 5, 12, '2018-01-30', 2, 'DescripciÃ³n del proyecto\n                       				 ', 1),
-(2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
-(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, '\r\n                         \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-i', 0),
-(4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				                         ', 1);
+INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`) VALUES
+(1, 86, '2017-12-31', 5, 12, '2018-01-30', 2, 'DescripciÃ³n del proyecto\n                       				 '),
+(2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 '),
+(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, '\r\n                         \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-i'),
+(4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				                         ');
 
 -- --------------------------------------------------------
 
@@ -2794,7 +2795,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `cobro`
 --
 ALTER TABLE `cobro`
-  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --

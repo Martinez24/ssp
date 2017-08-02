@@ -106,7 +106,7 @@
                                       <label for="no_factura">Número de factura:</label>
                                       <select name="proforma_id" class="form-control" required>
                                         <?php 
-                                        $sql = "SELECT * FROM proforma WHERE estatus = 1  ORDER BY no_factura ";
+                                        $sql = "SELECT * FROM proforma ORDER BY no_factura ";
                                         $resultado = mysql_query($sql, $conexion);
                                          while ($factura = mysql_fetch_assoc($resultado)) {
                                           echo "<option value='".$factura['id_proforma']."'>"."00".$factura['no_factura']."</option>";
@@ -144,7 +144,7 @@
                 </thead>
                 <tbody>
                 <?php
-                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, c.No_Cliente, c.nombre as nombre, co.id_cobro, co.porcentaje as porcentaje from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join cobro co on co.id_proforma = p.id_proforma ORDER BY no_factura DESC";
+                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, c.No_Cliente, c.nombre as nombre, co.id_cobro, co.porcentaje as porcentaje from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join cobro co on co.id_proforma = p.id_proforma  ORDER BY no_factura DESC";
                   $resultado = mysql_query($sql, $conexion);
                   while ($proforma = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";

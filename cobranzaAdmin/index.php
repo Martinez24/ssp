@@ -1,20 +1,10 @@
 <?php include('../login/validarsesion.php');?>
-<!--Conexion a la base de datos -->
- <?php
-  $host = 'localhost';
-  $user = 'root';
-  $password = '';
-  $bd = 'ssp';                  
-  $conexion = @mysql_connect($host, $user, $password);
-  mysql_query("SET NAMES 'utf8'");
-  @mysql_select_db($bd, $conexion);
- ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Editar | Proforma </title>
+    <title>SSP | Dashboard Conbranza</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -32,6 +22,7 @@
     <script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,65 +48,29 @@
 
       <!-- MENU -->
       <div class="content-wrapper" id="content"> 
-<!--Breadcrumb -->
-              <section class="content-header">
-                <ol class="breadcrumb">
-                   <i class="fa fa-dashboard"></i>
-                    <li><a href="">Home</a></li>
-                    <li>Proforma</li>
-                    <li class="active">Editar Proforma</li>
-                </ol>
-              </section>
-<!--Termina breadcrumb.-->
-        <section class="content-header">
-          <h1>
-            Editar
-            <small> proforma</small>
-          </h1>
-        </section>
-<section class="content">
-        <div> 
-          <div class="col-lg-6">
-             <div class="row">
-              <div class="panel">
-                <div class="panel-heading"></div>
-                <div class="panel-body">
-<!--Inicia el formulario para editar la proforma-->
-                  <form method="post" action="proforma.php" enctype="multipart/form-data" id="form">
-                    <input type="hidden" name="proforma_id" value="<?php echo $proforma['id_proforma'];?>">
-                    <div class="form-group">
-                    <b>Solo puedes realizar cambios en la descripcion de la proforma.</b>
-                      <label for="no_serie"><b>Número de factura: </b></label>
-                        <?php echo "00".$proforma['no_factura']."<br>";
-                         echo "<b>Fecha inicio:</b> ".$proforma['fecha_inicio']."<br>";
-                         echo "<b>Fecha entrega: </b>".$proforma['fecha_entrega']."<br>";
-                         echo "<b>Cliente: </b>".$proforma['nombre']."<br>";
-                         echo "<b>Vendedor: </b>".$proforma['vendedor']."<br>";
-                         echo "<b>Proyecto: </b>".$proforma['modelo'];
-                      ?>                      
-                    </div>
-                     <div class="form-group">
-                        <label class="col-lg-2 control-label">Descripción:</label>
-                        <textarea name="descripcion" value="" required  rows="10" cols="30" class="form-control"> 
-                        <?php echo $proforma['descripcion'];?>
-                        </textarea>
-                        </div>
+        <section class="content">
+          <div class="panel">
 
-                   <input type="submit" name="guardar_edicion" value="Guardar" class="btn btn-primary">
-
-                  </form>
-                </div>
-              </div>
-              </div>
+            <div class="panel-heading text-center">
+            <img class="profile-user-img img-responsive img-circle" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
+            <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>
+                <h3>Bienvenida</h3>
+           <center>
+            <img class="img-responsive" width="250" src="../assets/img/cobranza.png" alt="Conbranza">
+           </center> 
+               
+    
             </div>
+            <div class="panel-footer"></div>
           </div>
-</section>
-<!--Termina formulario de proforma-->
-
+        </section>
         <div class="clearfix"></div>
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
       </footer>
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
     <!-- Slimscroll -->
     <script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
@@ -126,6 +81,5 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../assets/dist/js/demo.js"></script>
     <script src="../assets/js/jquery.selectedoption.plugin.js"></script>
-    <script src="../assets/js/parsley.js"></script>
   </body>
 </html>

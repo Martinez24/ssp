@@ -18,7 +18,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
-                 <span id="hidden-xs" class="fa fa-user "><?php echo " Administrador: ".$_SESSION['usuario']['nombre'];?></span>
+                 <span class="fa fa-user hidden-xs"><?php echo " User: ".$_SESSION['usuario']['nombre'];?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->

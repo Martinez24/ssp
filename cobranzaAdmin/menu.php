@@ -5,7 +5,7 @@
           <ul class="sidebar-menu">
             <li class="header">MENÚ PRINCIPAL</li>
             <li>
-              <a href="../index.php">
+              <a href="index.php">
                 <i class="fa fa-home"></i> 
                 <span>Inicio</span>
               </a>
@@ -15,27 +15,28 @@
    
               </ul>
               <li>
-              <a href="../index_cliente.php">
-                <i class="fa fa-suitcase"></i>
-                <span>Clientes</span>
+              <a href="index_proforma.php">
+                <i class="fa fa-file-powerpoint-o"></i>
+                <span>Proforma</span>
               </a>
             </li>
             </li>
             <li class="treeview">
-              <a href="../index_usuarios.php">
-                <i class="fa fa-users"></i> <span>Usuarios</span>
+              <a href="index_cobro.php">
+                <i class="fa fa-money"></i> 
+                <span>Cobros</span>
               </a>
             </li>
             <li>
-              <a href="../index_proyecto.php">
-                <i class="fa  fa-gear"></i>
-                <span>Proyectos</span>
+              <a href="#">
+                <i class="fa fa-bar-chart"></i>
+                <span>Proyectos vendidos</span>
               </a>
             </li>
-           <li>
-              <a href="../index_vendedor.php">
-                <i class="fa fa-user"></i> 
-                <span>Vendedores</span>
+            <li>
+              <a href="index_consultarProforma.php">
+                <i class="fa fa-search"></i>
+                <span>Consultar Proforma</span>
               </a>
             </li>
             

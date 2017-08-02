@@ -26,7 +26,7 @@ if(isset($_GET['ver_proforma'])){
         @mysql_select_db($bd, $conexion);
         //Esta consulta permite visualizar los datos de la proforma
         $sql ="SELECT 
-        p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.estatus as estatus, p.descripcion as descripcion,
+        p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega,  p.descripcion as descripcion,
          c.No_Cliente,c.nombre as nombre_cliente, c.nu_cliente as numero, c.id_estado as estado, c.id_municipio as municipio, c.domicilio as domicilio, c.rfc as rfc, c.correo as correo, c.telefono as telefono, c.c_p as cp,
          e.id_estado, e.estado as estado, 
          v.id_vendedor, v.nombre as vendedor, 

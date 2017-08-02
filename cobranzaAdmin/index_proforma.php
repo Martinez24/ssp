@@ -178,8 +178,8 @@
                     <th></th>
                     <th>Número de factura</th>
                     <th>Fecha de Inicio</th>
-                    <th>Cliente</th>  
-                    <th>Estatus</th>                  
+                    <th>Fecha Entrega</th>  
+                    <th>Cliente</th>                  
                   </tr>
                 </thead>
                 <tbody>
@@ -191,7 +191,7 @@
                   $conexion = @mysql_connect($host, $user, $password);
                   mysql_query("SET NAMES 'utf8'");
                   @mysql_select_db($bd, $conexion);
-                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, c.No_Cliente, p.estatus as estatus, c.nombre as nombre from proforma p inner join cliente c on c.No_Cliente = p.id_cliente WHERE estatus = 1 ORDER BY no_factura DESC";
+                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_entrega as fecha_entrega, p.fecha_inicio as fecha_inicio, c.No_Cliente, c.nombre as nombre from proforma p inner join cliente c on c.No_Cliente = p.id_cliente ORDER BY no_factura DESC";
                   $resultado = mysql_query($sql, $conexion);
                   while ($proforma = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
@@ -199,8 +199,8 @@
                    echo "<td><a href='proforma.php?eliminar_proforma_id=".$proforma['id_proforma']."' class='btn btn-primary eliminar-proforma'><i title='Desactivar proforma' class='fa fa-remove eliminar-proforma'></i></a></td>";
                     echo "<td>00".$proforma['no_factura']."</td>";
                     echo "<td>".$proforma['fecha_inicio']."</td>";
+                    echo "<td>".$proforma['fecha_entrega']."</td>";
                     echo "<td>".$proforma['nombre']."</td>";
-                    echo "<td>".($proforma['estatus']==1?'Activo':'Inactivo')."</td>";
                     echo "</tr>";
                   }
                   function pr($var){
