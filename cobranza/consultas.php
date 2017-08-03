@@ -25,6 +25,7 @@
         p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
          c.No_Cliente,c.nombre as nombre_cliente, c.nu_cliente as numero, c.id_estado as estado, c.id_municipio as municipio, c.domicilio as domicilio, c.rfc as rfc, c.correo as correo, c.telefono as telefono, c.c_p as cp,
          e.id_estado, e.estado as estado, 
+         co.id_cobro, co.estatus as estatus, co.porcentaje as porcentaje,
          v.id_vendedor, v.nombre as vendedor, 
          pr.id, pr.modelo as modelo, pr.no_serie as numero_serie, pr.marca as marca 
          from proforma p 
@@ -32,7 +33,8 @@
          inner join vendedor v on v.id_vendedor = p.id_vendedor 
          inner join proyecto pr on pr.id = p.id_proyecto 
          inner join estado e on c.id_estado = e.id_estado 
-         where id_proforma = $ver_proforma_id";
+         inner join cobro co on p.id_proforma = co.id_proforma
+         where p.id_proforma = $ver_proforma_id";
 
         $resultado = mysql_query($sql, $conexion);
         //Consulta para colocar los acentos requeridos en los registros 
@@ -43,6 +45,7 @@
         p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
          c.No_Cliente,c.nombre as nombre, c.nu_cliente as numero, c.id_estado as estado, c.id_municipio, c.domicilio as domicilio, c.rfc as rfc, c.correo as correo, c.telefono as telefono, 
          e.id_estado, e.estado as estado, 
+         co.id_cobro, co.estatus as estatus, co.porcentaje as porcentaje,
          v.id_vendedor, v.nombre as vendedor, 
          pr.id, pr.modelo as modelo, pr.no_serie as numero_serie, pr.marca as marca 
          from proforma p 
@@ -50,7 +53,8 @@
          inner join vendedor v on v.id_vendedor = p.id_vendedor 
          inner join proyecto pr on pr.id = p.id_proyecto 
          inner join estado e on c.id_estado = e.id_estado 
-         where id_proforma = $ver_proforma_id";
+         inner join cobro co on p.id_proforma = co.id_proforma 
+         where p.id_proforma = $ver_proforma_id";
         $resultado = mysql_query($sql, $conexion);
         //Mientras 
         while ($proforma = mysql_fetch_assoc($resultado)) {

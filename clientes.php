@@ -16,7 +16,7 @@
 	if(isset($_POST['guardar_nuevo'])){
 		// Extraemos el contenido de la variable $_POST en variables independientes
 		extract($_POST);
-		$sql = "INSERT INTO cliente(nu_serie, nombre, domicilio, id_estado, id_municipio, rfc, correo, telefono, c_p) VALUES( '$nu_serie', '$nombre', '$domicilio', '$estado', '$municipio', '$rfc', '$correo', '$telefono', '$c_p')";
+		$sql = "INSERT INTO cliente(nu_cliente, nombre, domicilio, id_estado, id_municipio, rfc, correo, telefono, c_p) VALUES( '$nu_serie', '$nombre', '$domicilio', '$estado', '$municipio', '$rfc', '$correo', '$telefono', '$c_p')";
 		$resultado = mysql_query($sql, $conexion);
 		if($resultado == 1)
 				header("Location: index_cliente.php");
