@@ -75,8 +75,9 @@
               <table class="table">
                 <thead>
                   <tr>
+                  <h6>Estado del proyetco: <?php echo $proforma['estatus']==0?"<b>".'En proceso...':'Vendido'."</b>"?></h6>
                   <h5>Venta</h5>
-                  <b>Estado del proyetco: <?php echo $proforma['estatus']==1?'En proceso':'Vendido'?></b>
+                  
                   <h6><B>No. de cliente: </B>
                     <?php echo "CL00".$proforma1['numero']; ?></h6>
                     <th>Nombre</th>

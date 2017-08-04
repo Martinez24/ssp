@@ -23,7 +23,7 @@
         window.location.href="index_cobro.php";
           </script>';
     }else{
-      $sql = "INSERT INTO cobro (porcentaje, id_proforma) VALUES ($porcentaje, $proforma_id)";
+      $sql = "INSERT INTO cobro (porcentaje, id_proforma, estatus) VALUES ($porcentaje, $proforma_id, 1)";
     $resultado = mysql_query($sql, $conexion);
     if($resultado == 1)
       header("Location: index_cobro.php");

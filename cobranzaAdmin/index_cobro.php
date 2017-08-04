@@ -139,7 +139,7 @@
                     <th>Número de factura</th>
                     <th>Fecha de Inicio</th>
                     <th>Cliente</th>  
-                    <th>Estatus del cobro</th>                  
+                    <th>Estado del cobro</th>                  
                   </tr>
                 </thead>
                 <tbody>

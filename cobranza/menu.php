@@ -28,7 +28,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="index_vendidos.php">
                 <i class="fa fa-bar-chart"></i>
                 <span>Proyectos vendidos</span>
               </a>
@@ -36,7 +36,7 @@
             <li>
               <a href="index_consultarProforma.php">
                 <i class="fa fa-search"></i>
-                <span>Consultar Proforma</span>
+                <span>Proyectos en proceso</span>
               </a>
             </li>
             

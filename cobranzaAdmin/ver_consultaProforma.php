@@ -75,10 +75,12 @@
               <table class="table">
                 <thead>
                   <tr>
-                  <h5>Venta para:</h5>
+                  <h6>Estado del proyetco: <?php echo $proforma['estatus']==0?"<b>".'En proceso...':'Vendido'."</b>"?></h6>
+                  <h5>Venta</h5>
+                  
                   <h6><B>No. de cliente: </B>
                     <?php echo "CL00".$proforma1['numero']; ?></h6>
-                    <th>Nombre:</th>
+                    <th>Nombre</th>
                     <th>Domicilio</th>
                     <!--Eastado, municipio y cp van juntos en una columna-->
                     <th>Ciudad</th>
@@ -143,9 +145,10 @@
                   <?php
                   echo "<td>".$proforma1['descripcion']."</td>";
                   ?>
-
                   </table>
             </div>
+            <b>Estado del cobro del Proyecto: 
+                  <?php echo "<td><h5><small class='pull-right'>".$proforma1['porcentaje'].'%'."</small></h5><div class='progress xs'><div class='progress-bar progress-bar-green' style='width:".$proforma1['porcentaje'].'%'."'' role='progress-bar' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100'></div></div></td>";?>
             <!-- /.col -->
           </div>
           <!-- /.row -->

@@ -53,7 +53,7 @@
           <!-- info row -->
           <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
-            <b>Estado del proyetco: <?php echo $proforma['estatus']==1?'En proceso':'Vendido'?></b>
+            <b>Estado del proyetco: <?php echo $proforma['estatus']==1?'En proceso...':'Vendido'?></b>
                 <h4>Datos de cliente</h4>
                 <address>
                 <b>No. de Cliente: </b> <?php echo "CL00".$proforma['numero'] ?><br>
@@ -96,7 +96,7 @@
               <h4>Descripción</h4>
               <address>
               <b>Estado del cobro del Proyecto: </b>
-             <?php echo "<td><h5><small class='pull-right'>".$proforma['porcentaje'].'%'."</small></h5><div class='progress xs'><div class='progress-bar progress-bar-green' style='width:".$proforma['porcentaje'].'%'."'' role='progress-bar' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100'></div></div></td>";?><br>
+             <?php echo " ".$proforma['porcentaje']."%"?><br>
               <b>Serie: </b><?php echo $proforma['numero_serie']?><br>
               <b>Marca: </b><?php echo $proforma['marca'];?><br>
               <b>Modelo: </b><?php echo $proforma['modelo'];?><br>

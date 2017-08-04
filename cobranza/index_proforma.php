@@ -191,7 +191,7 @@
                   $conexion = @mysql_connect($host, $user, $password);
                   mysql_query("SET NAMES 'utf8'");
                   @mysql_select_db($bd, $conexion);
-                  $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_entrega as fecha_entrega, p.fecha_inicio as fecha_inicio, c.No_Cliente, c.nombre as nombre from proforma p inner join cliente c on c.No_Cliente = p.id_cliente ORDER BY no_factura DESC";
+                  $sql = "SELECT p.id_proforma, p.estatus, p.no_factura as no_factura, p.fecha_entrega as fecha_entrega, p.fecha_inicio as fecha_inicio, c.No_Cliente, c.nombre as nombre from proforma p inner join cliente c on c.No_Cliente = p.id_cliente where p.estatus = 1 ORDER BY no_factura DESC";
                   $resultado = mysql_query($sql, $conexion);
                   while ($proforma = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";

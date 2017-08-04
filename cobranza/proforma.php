@@ -16,7 +16,7 @@
 	if(isset($_POST['guardar_nuevo'])){
 		// Extraemos el contenido de la variable $_POST en variables independientes
 		extract($_POST);
-		$sql = "INSERT INTO proforma(no_factura, fecha_inicio, id_cliente, id_vendedor, fecha_entrega, id_proyecto, descripcion, estatus) VALUES('$no_factura', '$fecha_inicio', '$id_cliente', '$id_vendedor', '$fecha_entrega', '$id_proyecto', '$descripcion', '1')";
+		$sql = "INSERT INTO proforma(no_factura, fecha_inicio, id_cliente, id_vendedor, fecha_entrega, id_proyecto, descripcion) VALUES('$no_factura', '$fecha_inicio', '$id_cliente', '$id_vendedor', '$fecha_entrega', '$id_proyecto', '$descripcion')";
 		$resultado = mysql_query($sql, $conexion);
 		print_r($sql);
 		if($resultado == 1)
@@ -42,7 +42,7 @@
 	if(isset($_GET['editar_proforma_id'])){
 		// Extraemos el contenido de la variable $_GET en variables independientes
 		extract($_GET);
-		$sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.estatus as estatus, p.descripcion as descripcion,
+		$sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
 		 				c.No_Cliente,c.nombre as nombre, 
 		 					v.id_vendedor, v.nombre as vendedor, 
 		 						pr.id, pr.modelo as modelo from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join vendedor v on v.id_vendedor = p.id_vendedor 
@@ -71,3 +71,4 @@
 		print_r($var);
 		echo "</pre>";
 	}
+	

@@ -109,7 +109,7 @@
                     echo "<td>00".$proforma['no_factura']."</td>";
                     echo "<td>".$proforma['fecha_inicio']."</td>";
                     echo "<td>".$proforma['nombre']."</td>";
-                    echo "<td>".($proforma['estatus']==1?'En curso':'Vendido')."</td>";
+                    echo "<td>".($proforma['estatus']==1?'En Proceso...':'Vendido')."</td>";
                     echo "</tr>";
                   }
                   function pr($var){

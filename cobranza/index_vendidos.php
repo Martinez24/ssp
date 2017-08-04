@@ -98,7 +98,7 @@
                          inner join vendedor v on v.id_vendedor = p.id_vendedor  
                          inner join proyecto pr on pr.id = p.id_proyecto 
                          inner join estado e on c.id_estado = e.id_estado 
-                         inner join cobro co on p.id_proforma = co.id_proforma where co.estatus = 1 ";
+                         inner join cobro co on p.id_proforma = co.id_proforma where co.estatus = 0 ";
                   $resultado = mysql_query($sql, $conexion);
                   while ($proyecto = mysql_fetch_assoc($resultado)) {
                     echo "<tr>";
