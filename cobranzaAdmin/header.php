@@ -1,6 +1,6 @@
 <header class="main-header">
         <!-- Logo -->
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>G</b>PA</span>
           <!-- logo for regular state and mobile devices -->
@@ -14,11 +14,28 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+
+                <li class="dropdown notifications-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-bell-o">                
+              </i>
+              <span class="label label-warning">10</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="header">Tienes Mensajes</li>
+                <li>
+                  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"></div>
+                </li>
+                <li class="footer">
+                <a href="#">Ver todo</a>
+                </li>
+              </ul>
+              </li>
                      
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
-                 <span class="fa fa-user hidden-xs"><?php echo " User: ".$_SESSION['usuario']['nombre'];?></span>
+                 <span class="hidden-xs"><?php echo "Administrador: ".$_SESSION['usuario']['nombre'];?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -42,5 +59,56 @@
               </li>
             </ul>
           </div>
+          <div class="navbar-custom-menu">
+            <!--Inicia DashBoard
+            -->
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+               <!-- Brand and toggle get grouped for better mobile display -->
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Acceso Rápido</a> 
+                </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conbranza <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="index_proforma.php">Proforma</a></li>
+            <li><a href="index_consultarProforma.php">Proyectos en proceso</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="index_cobro.php">Cobros</a></li>
+            <li><a href="index_vendidos.php">Proyectos Vendidos</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+          </div>
         </nav>
       </header>
+      
+     
+      
+        

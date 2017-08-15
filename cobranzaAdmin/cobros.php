@@ -58,7 +58,7 @@
     //Si el resultado es igual a 100 cambia el estado del proyecto a vendido
         if($sumRes == 100){
           $estatus = "UPDATE cobro SET estatus = 0 WHERE id_cobro = $cobro_id ";
-            $res = mysql_query($estatus, $conexion); 
+            $res = mysql_query($estatus, $conexion);
             echo '<script languaje="javascript">
             alert("Se actualizado el estado del proyecto a vendido")
             window.location.href="index_cobro.php";

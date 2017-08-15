@@ -88,6 +88,7 @@
                       
                     </div>
                   <h4>Información del proyecto</h4>
+                  <img class="img-responsive pull-right" width="160" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
                       <label for="no_serie"><b>Número de factura: </b></label>
                         <?php echo "00".$proyecto['no_factura']."<br>";
                          echo "<b>Fecha inicio:</b> ".$proyecto['fecha_inicio']."<br>";

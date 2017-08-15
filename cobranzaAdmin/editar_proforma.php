@@ -85,6 +85,7 @@
                     <input type="hidden" name="proforma_id" value="<?php echo $proforma['id_proforma'];?>">
                     <div class="form-group">
                     <b>Solo puedes realizar cambios en la descripcion de la proforma.</b>
+                    <img class="img-responsive pull-right" width="160" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
                       <label for="no_serie"><b>Número de factura: </b></label>
                         <?php echo "00".$proforma['no_factura']."<br>";
                          echo "<b>Fecha inicio:</b> ".$proforma['fecha_inicio']."<br>";

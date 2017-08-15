@@ -56,9 +56,9 @@
           </h1>          
         </section>
         <!-- Main content -->
-        <section class="invoice">
+        <section class="invoice"><br>
           <!-- title row -->
-          <a href="sqlProforma.php?imprimir=<?php echo $proforma1['id_proforma']; ?>" class="btn btn-success pull-right"><i class="fa fa-print"></i> Imprimir Proforma</a>
+          <br><a href="sqlProforma.php?imprimir=<?php echo $proforma1['id_proforma']; ?>" class="btn btn-success pull-right"><i class="fa fa-print"></i> Imprimir Proforma</a>
           <div class="row">
               <img src="../assets/img/plasma.PNG" width="350">
               <center><h4>PROFORMA PROYECTOS</h4></center>
@@ -75,7 +75,7 @@
               <table class="table">
                 <thead>
                   <tr>
-                  <h6>Estado del proyetco: <?php echo $proforma['estatus']==0?"<b>".'En proceso...':'Vendido'."</b>"?></h6>
+                  <h6>Estado del proyecto: <?php echo $proforma1['estatus']==1?"<b>".'En proceso...':'Vendido'."</b>"?></h6>
                   <h5>Venta</h5>
                   
                   <h6><B>No. de cliente: </B>

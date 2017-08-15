@@ -104,7 +104,7 @@
 <!-- Inician campos del formulario -->
                                     <div class="form-group">
                                       <label for="no_factura">Número de factura:</label>
-                                      <input type="text" name="no_factura" required id="no_factura" placeholder="Ej: 0083" class="form-control" autofocus>
+                                      <input type="text" name="no_factura" required id="no_factura" placeholder="Ej: 83" class="form-control" autofocus>
                                     </div>
                                     <div class="form-group">
                                       <label for="fecha_inicio">Fecha inicio:</label>

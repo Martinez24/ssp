@@ -60,7 +60,7 @@
          <div class="row">
           <div class="panel">
             <div class="panel-heading">
-              <a class="btn btn-success pull-right" href="productos.php?reporte"><i class="fa  fa-file-excel-o"></i> Exportar Reporte</a><br>
+              <a class="btn btn-success pull-right" href="consultas.php?reporte_vendidos"><i class="fa  fa-file-excel-o"></i> Exportar Reporte</a><br>
             </div>
             <div class="panel-body">
               <table class="table" id="productos">
@@ -86,6 +86,7 @@
                   $bd = 'ssp';
                   $conexion = @mysql_connect($host, $user, $password);
                   @mysql_select_db($bd, $conexion);
+                  
                   $sql = "SELECT 
                         p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
                          c.No_Cliente,c.nombre as nombre_cliente, c.nu_cliente as numero, c.id_estado as estado, c.id_municipio as municipio, c.domicilio as domicilio, c.rfc as rfc, c.correo as correo, c.telefono as telefono, c.c_p as cp,

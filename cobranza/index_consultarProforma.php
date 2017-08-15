@@ -60,7 +60,7 @@
          <div class="row">
           <div class="panel">
             <div class="panel-heading">
-              <a class="btn btn-success pull-right" href="productos.php?reporte"><i class="fa  fa-file-excel-o"></i> Exportar Reporte</a><br>
+              <a class="btn btn-success pull-right" href="consultas.php?reporte_proceso"><i class="fa  fa-file-excel-o"></i> Exportar Reporte</a><br>
             </div>
             <div class="panel-body">
               <table class="table" id="productos">

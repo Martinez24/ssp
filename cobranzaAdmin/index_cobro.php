@@ -71,7 +71,7 @@
          <div class="row">
           <div class="panel">
             <div class="panel-heading">
-
+  
 <!--Aplicación de modal con Bootstrap -->
             <button class="btn btn-danger" data-toggle="modal" data-target="#miventana">Agregar Pago</button>
  <!--Breadcrumb -->

@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	if(!isset($_SESSION['usuario'])){
-		header('Location: login.php');
+		header('Location: ./login.php');
 	}
 	//Comprobamos si esta definida la sesión 'tiempo'.
 if(isset($_SESSION['tiempo']) ) {
@@ -20,7 +20,7 @@ if(isset($_SESSION['tiempo']) ) {
             //Destruimos sesión.
             session_destroy();              
             //Redirigimos pagina.
-            header("Location: ../login.php");
+            header("Location: ./login.php");
 
             exit();
         }

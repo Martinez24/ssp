@@ -1,7 +1,18 @@
-<?php include('login/validarsesion.php');?>
+<?php include('login/validarsesion.php');
+ $host = "localhost";
+    $user = "root";
+    $password = "";
+    $bd = "ssp";
+    $conexion = @mysql_connect($host, $user, $password);
+    @mysql_select_db($bd, $conexion);
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
+   <!-- high charts scripts-->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SSP | Dashboard Administrador</title>
@@ -35,7 +46,7 @@
     <link href="assets/plugins/pnotify/css/pnotify.custom.min.css" rel="stylesheet">
     <script src="assets/plugins/pnotify/js/pnotify.custom.min.js"></script>
   </head>
-  <body class="hold-transition skin-blue-light sidebar-mini">
+  <body class="hold-transition skin-red-light sidebar-mini">
     <div class="wrapper">
 
       <?php
@@ -65,7 +76,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="#">Dash Board</a> 
+                  <a class="navbar-brand" href="#">Acceso Rápido</a> 
                 </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -105,6 +116,54 @@
                      <h6>SSP</h6>  
                       <center><img class="img-responsive " src="./assets/img/admn.jpg" alt="Grupo Plasma Automation"></center>
             </div>
+            <div class="panel panel-danger">
+                   <!--Inicio de gráfica de pagos-->
+            <section class="col-lg-7 connectedSortable ui-sortable">
+            <div class="nav-tabs-costum" style="cursor:move">
+            <ul class="nav nav-tabs pull-right ui-sortable-handle">
+              <li class="active"></li>
+              <li class="pull-left header">
+                <i class="fa fa-bar-char"></i>
+                Estatus
+              </li>
+            </ul>
+            <div class="tab-content no-padding">
+             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<?php 
+$sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
+                        c.No_Cliente,c.nombre as nombre,
+                         co.id_cobro, co.porcentaje as porcentaje, 
+                            v.id_vendedor, v.nombre as vendedor, 
+                                pr.id, pr.modelo as modelo from proforma p 
+                                inner join cliente c on c.No_Cliente = p.id_cliente 
+                                inner join vendedor v on v.id_vendedor = p.id_vendedor 
+                                inner join cobro co on p.id_proforma = co.id_proforma
+                                    inner join proyecto pr on pr.id = p.id_proyecto";
+$resultado = mysql_query($sql, $conexion);
+
+
+?>
+<table id="datatable">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Porcentaje del pago</th>
+     </tr>
+    </thead>
+<tbody>
+    <?php 
+    while ($porcentaje = mysql_fetch_assoc($resultado)){
+        echo "<tr><th>".$porcentaje['nombre']."</th> <td>".$porcentaje['porcentaje']."</td></tr>";
+    }
+    ?>
+    </tr> 
+    </tbody>
+</table>
+            </div>
+            </div>
+            </section>
+<!-- Fin de graficas-->
+            </div>
             <div class="panel-footer"></div>
           </div>
         </section>
@@ -125,5 +184,30 @@
     <!-- AdminLTE for demo purposes -->
     <script src="assets/dist/js/demo.js"></script>
     <script src="assets/js/jquery.selectedoption.plugin.js"></script>
+     <script type="text/javascript">
+    Highcharts.chart('container', {
+    data: {
+        table: 'datatable'
+    },
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Gráfica del estado de pago de los clientes'
+    },
+    yAxis: {
+        allowDecimals: false,
+        title: {
+            text: 'Pago en porcentaje'
+        }
+    },
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.series.name + '</b><br/>' +
+                this.point.y + ' ' + this.point.name.toLowerCase();
+        }
+    }
+});
+</script>
   </body>
 </html>

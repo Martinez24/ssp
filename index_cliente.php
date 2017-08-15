@@ -91,7 +91,7 @@
                                   <form method="post" action="clientes.php" enctype="multipart/form-data" id="form">
                                     <div class="form-group">
                                       <label for="nu_serie"> Número del cliente</label>
-                                      <input type="text" name="nu_serie" required id="nu_serie" placeholder="Ej: 01759" class="form-control" autofocus>
+                                      <input type="text" name="nu_serie" required id="nu_serie" placeholder="Ej: 1759" class="form-control" autofocus>
                                     </div>
 
                                     <div class="form-group">

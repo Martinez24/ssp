@@ -16,7 +16,7 @@
 	if(isset($_POST['guardar_nuevo'])){
 		// Extraemos el contenido de la variable $_POST en variables independientes
 		extract($_POST);
-		$sql = "INSERT INTO proforma(no_factura, fecha_inicio, id_cliente, id_vendedor, fecha_entrega, id_proyecto, descripcion) VALUES('$no_factura', '$fecha_inicio', '$id_cliente', '$id_vendedor', '$fecha_entrega', '$id_proyecto', '$descripcion')";
+		$sql = "INSERT INTO proforma(no_factura, fecha_inicio, id_cliente, id_vendedor, fecha_entrega, id_proyecto, descripcion, estatus) VALUES('$no_factura', '$fecha_inicio', '$id_cliente', '$id_vendedor', '$fecha_entrega', '$id_proyecto', '$descripcion', 1)";
 		$resultado = mysql_query($sql, $conexion);
 		print_r($sql);
 		if($resultado == 1)
@@ -71,3 +71,4 @@
 		print_r($var);
 		echo "</pre>";
 	}
+	
