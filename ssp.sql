@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2017 a las 23:54:39
+-- Tiempo de generación: 18-08-2017 a las 21:16:02
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -37,16 +37,17 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `correo` varchar(30) NOT NULL,
   `telefono` int(15) NOT NULL,
   `c_p` int(8) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`No_Cliente`, `nu_cliente`, `nombre`, `domicilio`, `id_estado`, `id_municipio`, `rfc`, `correo`, `telefono`, `c_p`) VALUES
-(2, 0, 'as', 'as', 0, '', 'kj88h291', 'm@m.c', 7896523, 2),
 (5, 0, 'Metal S.A. de C.V', 'Miraflores #456, Aguacate', 19, 'Galeana ', '1psosld', 'aguacate@aguatacate.com', 789453202, 37562),
-(6, 1759, 'Automation Systems G.J.', '27 A Norte  #155, San Alejandro', 21, 'PUEBLA ', 'ASG110228H40', 'ernesto.gonzalez@automationsys', 2147483647, 72090);
+(6, 1759, 'Automation Systems G.J.', '27 A Norte  #155, San Alejandro', 21, 'PUEBLA ', 'ASG110228H40', 'ernesto.gonzalez@automationsys', 2147483647, 72090),
+(7, 1760, 'MidWest S.A. de C.V. ', 'OlÃ­mpica #123-B', 12, 'LEON', 'JHKIPK4568', 'midwest@midwest.com.mx', 2147483647, 37896),
+(8, 1800, 'Castores S.A. de C.V.', 'Avenida Libramiento #3412', 15, 'EL ARENAL ', 'AHGSIH123', 'castores@castores.com.mx', 455589878, 78569);
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `cobro` (
   `porcentaje` int(3) NOT NULL,
   `id_proforma` int(11) NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cobro`
@@ -68,7 +69,10 @@ CREATE TABLE IF NOT EXISTS `cobro` (
 INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`, `estatus`) VALUES
 (34, 100, 1, 0),
 (36, 100, 2, 0),
-(38, 100, 3, 0);
+(38, 100, 3, 0),
+(39, 80, 5, 1),
+(40, 25, 6, 1),
+(41, 50, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -2601,6 +2605,26 @@ INSERT INTO `municipios` (`id_municipio`, `nombre_municipio`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `notificacion`
+--
+
+CREATE TABLE IF NOT EXISTS `notificacion` (
+  `id_notificacion` int(11) NOT NULL,
+  `id_proforma` int(11) NOT NULL,
+  `estatus` int(11) NOT NULL,
+  `contador` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `notificacion`
+--
+
+INSERT INTO `notificacion` (`id_notificacion`, `id_proforma`, `estatus`, `contador`) VALUES
+(3, 14, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `proforma`
 --
 
@@ -2612,18 +2636,18 @@ CREATE TABLE IF NOT EXISTS `proforma` (
   `id_vendedor` int(4) NOT NULL,
   `fecha_entrega` date NOT NULL,
   `id_proyecto` int(4) NOT NULL,
-  `descripcion` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `descripcion` text NOT NULL,
+  `estatus` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proforma`
 --
 
-INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`) VALUES
-(1, 86, '2017-12-31', 5, 12, '2018-01-30', 2, 'DescripciÃ³n del proyecto\n                       				 '),
-(2, 87, '2017-12-31', 5, 12, '2018-01-31', 2, 'DescripciÃ³n del proyecto\r\n                       				 '),
-(3, 88, '2017-07-20', 5, 12, '2017-07-22', 2, '\r\n                         \r\n                         2:15 Mike Doe\r\nI would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market\r\nAttachments:\r\nTheme-thumbnail-i'),
-(4, 89, '2017-07-21', 6, 13, '2017-07-22', 3, 'Pantografo para corte por plasma.\r\n                       				                         ');
+INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
+(8, 80, '2017-08-17', 8, 13, '2017-08-18', 5, 'Lorem\r\n                       				 ', 1),
+(13, 81, '2017-08-17', 7, 13, '2017-08-18', 4, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
+(14, 82, '2017-08-08', 6, 13, '2017-08-17', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 1);
 
 -- --------------------------------------------------------
 
@@ -2636,7 +2660,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `no_serie` varchar(8) NOT NULL,
   `marca` varchar(20) NOT NULL,
   `modelo` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proyecto`
@@ -2644,7 +2668,9 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
 
 INSERT INTO `proyecto` (`id`, `no_serie`, `marca`, `modelo`) VALUES
 (2, 'P-123', 'CIMSA', 'Panther 820'),
-(3, 'P-126', 'Azimatronics', 'Bird Cut');
+(3, 'P-126', 'Azimatronics', 'Bird Cut'),
+(4, 'P-189', 'Azimatronics', 'Shark Cut'),
+(5, 'P-200', 'Plasma Automation', 'Paper-cut');
 
 -- --------------------------------------------------------
 
@@ -2707,7 +2733,7 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `id_sucursal` int(1) NOT NULL,
   `correo` varchar(25) NOT NULL,
   `telefono` int(12) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `vendedor`
@@ -2715,7 +2741,8 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
 
 INSERT INTO `vendedor` (`id_vendedor`, `nombre`, `id_sucursal`, `correo`, `telefono`) VALUES
 (12, 'Ana Patricia MartÃ­nez LÃ³pez', 1, 'patrick_2102@hotmail.com', 2147483647),
-(13, 'Jose Antonio Sosa', 1, 'sosa@plasmaautomation.com', 2147483647);
+(13, 'Jose Antonio Sosa', 1, 'sosa@plasmaautomation.com', 2147483647),
+(14, 'JosÃ© Luis Garcia', 1, 'jose@plasmaautomation.com', 477890102);
 
 --
 -- Índices para tablas volcadas
@@ -2748,6 +2775,12 @@ ALTER TABLE `estado`
 --
 ALTER TABLE `municipios`
   ADD PRIMARY KEY (`id_municipio`);
+
+--
+-- Indices de la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  ADD PRIMARY KEY (`id_notificacion`);
 
 --
 -- Indices de la tabla `proforma`
@@ -2790,12 +2823,12 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `No_Cliente` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `cobro`
 --
 ALTER TABLE `cobro`
-  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -2807,15 +2840,20 @@ ALTER TABLE `estado`
 ALTER TABLE `municipios`
   MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2578;
 --
+-- AUTO_INCREMENT de la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT de la tabla `proforma`
 --
 ALTER TABLE `proforma`
-  MODIFY `id_proforma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_proforma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -2825,7 +2863,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `vendedor`
 --
 ALTER TABLE `vendedor`
-  MODIFY `id_vendedor` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id_vendedor` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

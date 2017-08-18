@@ -18,19 +18,26 @@
 		extract($_POST);
 		$sql = "INSERT INTO proforma(no_factura, fecha_inicio, id_cliente, id_vendedor, fecha_entrega, id_proyecto, descripcion, estatus) VALUES('$no_factura', '$fecha_inicio', '$id_cliente', '$id_vendedor', '$fecha_entrega', '$id_proyecto', '$descripcion', 1)";
 		$resultado = mysql_query($sql, $conexion);
-		//Guardamos el ultimo id insertado en proforma_id.
-		$proforma_id = mysql_insert_id();
-		//Insertamos registro dentro de la tabla notificaciones.
-		$sql1 = "INSERT INTO notificaciones (id_proforma, estatus, contador) VALUES('$proforma_id', 1, 1)";
-		$notificacion = mysql_query($sql1, $conexion);
-		if($resultado == 1)
-			header("Location: index_proforma.php");
-		else 
+		if($resultado != 1){
 			echo '<script language="javascript">
         alert("Intentalo de nuevo, número de factura ya existe.")
         window.location.href="index_proforma.php";
           </script>';
 		exit;
+	}
+	//Guardamos el ultimo id insertado en proforma_id.
+		$proforma_id = mysql_insert_id();
+		//Insertamos registro dentro de la tabla notificaciones.
+		$sql1 = "INSERT INTO notificacion (id_proforma, estatus, contador) VALUES('$proforma_id', 1, 1)";
+		$resultado = mysql_query($sql1, $conexion);
+		if($resultado != 1){
+			echo '<script language="javascript">
+        alert("Algo salio mal :(.")
+        window.location.href="index_proforma.php";
+          </script>';
+		exit;
+		}
+	header("Location: index_proforma.php");	
 	}
 	// Comprueba la existencia de una peticion post que corresponda al nombre guardar_edicion
 	if(isset($_POST['guardar_edicion'])){
