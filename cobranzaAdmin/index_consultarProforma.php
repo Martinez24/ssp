@@ -86,7 +86,7 @@
                   $bd = 'ssp';
                   $conexion = @mysql_connect($host, $user, $password);
                   @mysql_select_db($bd, $conexion);
-                  $sql = "SELECT 
+                  $sql1 = "SELECT 
                         p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
                          c.No_Cliente,c.nombre as nombre_cliente, c.nu_cliente as numero, c.id_estado as estado, c.id_municipio as municipio, c.domicilio as domicilio, c.rfc as rfc, c.correo as correo, c.telefono as telefono, c.c_p as cp,
                          e.id_estado, e.estado as estado, 
@@ -99,8 +99,8 @@
                          inner join proyecto pr on pr.id = p.id_proyecto 
                          inner join estado e on c.id_estado = e.id_estado 
                          inner join cobro co on p.id_proforma = co.id_proforma where co.estatus = 1 ";
-                  $resultado = mysql_query($sql, $conexion);
-                  while ($proyecto = mysql_fetch_assoc($resultado)) {
+                 $res = mysql_query($sql1, $conexion);
+                 while ($proyecto = mysql_fetch_assoc($res)) {
                     echo "<tr>";
                     echo "<td>00".$proyecto['no_factura']."</td>";
                     echo "<td>".$proyecto['nombre_cliente']."</td>";

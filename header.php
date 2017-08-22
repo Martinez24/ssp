@@ -41,12 +41,13 @@
                   <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
                     <ul class="menu" style="overflow: hidden; width: 100%; height: 200px">
                       <?php 
-                      $sql = "SELECT pr.id_proforma, pr.no_factura as factura, n.id_proforma, n.estatus, n.contador from notificacion n inner join proforma pr on pr.id_proforma = n.id_proforma where n.estatus = 1";
+                      $sql = "SELECT pr.id_proforma, pr.no_factura as factura, n.id_notificacion as notificacion_id, n.id_proforma, n.estatus, n.contador from notificacion n inner join proforma pr on pr.id_proforma = n.id_proforma where n.estatus = 1 ";
                       $resultado = mysql_query($sql, $conexion);
                       ?>
                       <?php 
                         while($notificacion = mysql_fetch_assoc($resultado)){
                           echo "<li><a href='notificacion/consultas.php?ver_proforma_id=".$notificacion['id_proforma']."'><i class ='fa  fa-folder-o text-yellow'></i>Cobranza ha subido la profrorma 00".$notificacion['factura']."</a></li>";
+                        $notificacion['notificacion_id'];
                         }
                       ?>
                     </ul>

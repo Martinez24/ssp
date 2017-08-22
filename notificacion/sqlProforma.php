@@ -21,9 +21,10 @@ if(isset($_GET['ver_proforma'])){
         $host = 'localhost';
         $user = 'root';
         $password = '';
-        $bd = 'ssp';
+        $bd = 'ssp';+
         $conexion = @mysql_connect($host, $user, $password);
         @mysql_select_db($bd, $conexion);
+         mysql_query("SET NAMES 'utf8'");
         //Esta consulta permite visualizar los datos de la proforma
         $sql ="SELECT 
         p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,

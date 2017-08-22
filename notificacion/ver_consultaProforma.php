@@ -132,8 +132,8 @@
               <tr>
                   <h5>Descripción:</h5>
                   <table class="table">
-                    <th>Marca</th>
-                    <th>Modelo</th>
+                    <th>Marca:</th>
+                    <th>Modelo:</th>
               </tr>
                   <tbody>
                   <?php
@@ -141,7 +141,7 @@
                     echo "<td>".$proforma1['modelo']."</td>";
                   ?>
                   </tbody>
-                  <th>Descripción</th>
+                  <th>Descripción:</th>
                   <?php
                   echo "<td>".$proforma1['descripcion']."</td>";
                   ?>
