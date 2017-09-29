@@ -6,7 +6,7 @@ class MySQL
   {
     if(!isset($this->conexion))
   {
-      $this->conexion = (mysql_connect("localhost","root","")) or die(mysql_error());
+      $this->conexion = (mysql_connect("localhost","root","123")) or die(mysql_error());
       mysql_select_db("tablero",$this->conexion) or die(mysql_error());
     }
   }

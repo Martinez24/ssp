@@ -98,7 +98,7 @@
                                            <?php
                                             $host = 'localhost';
                                             $user = 'root';
-                                            $password = '';
+                                            $password = '123';
                                             $bd = 'ssp';
                                             $conexion = @mysql_connect($host, $user, $password);
                                             @mysql_select_db($bd, $conexion);
@@ -149,7 +149,7 @@
                 <?php
                   $host = 'localhost';
                   $user = 'root';
-                  $password = '';
+                  $password = '123';
                   $bd = 'ssp';
                   $conexion = @mysql_connect($host, $user, $password);
                   @mysql_select_db($bd, $conexion);

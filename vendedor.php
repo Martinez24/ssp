@@ -6,7 +6,7 @@
 	// Definimos los datos del servidor y base de datos para establecer conexión con MySQL
 	$host = 'localhost';
 	$user = 'root';
-	$password = '';
+	$password = '123';
 	$bd = 'ssp';
 	// Ejecutamos conexión con MySQL
 	$conexion = @mysql_connect($host, $user, $password);

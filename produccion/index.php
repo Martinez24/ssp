@@ -1,22 +1,12 @@
-<?php include('../login/validarsesion.php');
-    $host = "localhost";
-    $user = "root";
-    $password = "123";
-    $bd = "ssp";
-    $conexion = @mysql_connect($host, $user, $password);
-    @mysql_select_db($bd, $conexion);
+<?php 
+include('../login/validarsesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
-  <!-- high charts scripts-->
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/data.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SSP | Dashboard Conbranza</title>
+    <title>SSP | Dashboard Producción</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -66,62 +56,26 @@
             <div class="panel-heading text-center">
             <img class="profile-user-img img-responsive img-circle" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
             <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>
-                <h3>Bienvenida</h3>
-           
+                <h3>Bienvenido</h3>  
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.         
             </div>
-            <!--Inicio de gráfica de pagos-->
-            <section class="col-lg-7 connectedSortable ui-sortable">
-            <div class="nav-tabs-costum" style="cursor:move">
-            <ul class="nav nav-tabs pull-right ui-sortable-handle">
-              <li class="active"></li>
-              <li class="pull-left header">
-                <i class="fa fa-bar-char"></i>
-                Estatus
-              </li>
-            </ul>
-            <div class="tab-content no-padding">
-             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<?php 
-$sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
-                        c.No_Cliente,c.nombre as nombre,
-                         co.id_cobro, co.porcentaje as porcentaje, 
-                            v.id_vendedor, v.nombre as vendedor, 
-                                pr.id, pr.modelo as modelo from proforma p 
-                                inner join cliente c on c.No_Cliente = p.id_cliente 
-                                inner join vendedor v on v.id_vendedor = p.id_vendedor 
-                                inner join cobro co on p.id_proforma = co.id_proforma
-                                    inner join proyecto pr on pr.id = p.id_proyecto";
-$resultado = mysql_query($sql, $conexion);
-
-
-?>
-<table id="datatable">
-    <thead>
-    <tr>
-        <th>Cliente</th>
-        <th>Porcentaje del pago</th>
-     </tr>
-    </thead>
-<tbody>
-    <?php 
-    while ($porcentaje = mysql_fetch_assoc($resultado)){
-        echo "<tr><th>".$porcentaje['nombre']."</th> <td>".$porcentaje['porcentaje']."</td></tr>";
-    }
-    ?>
-    </tr> 
-    </tbody>
-</table>
             </div>
             </div>
             </section>
-<!-- Fin de graficas-->
             <div class="panel-footer"></div>
           </div>
         </section>
         <div class="clearfix"></div>
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
+      
       </footer>
+      </body>
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
@@ -131,34 +85,5 @@ $resultado = mysql_query($sql, $conexion);
     <!-- FastClick -->
     <script src="../assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../assets/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../assets/dist/js/demo.js"></script>
-    <script src="../assets/js/jquery.selectedoption.plugin.js"></script>
-    <script type="text/javascript">
-    Highcharts.chart('container', {
-    data: {
-        table: 'datatable'
-    },
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Gráfica del estado de pago de los clientes'
-    },
-    yAxis: {
-        allowDecimals: false,
-        title: {
-            text: 'Pago en porcentaje'
-        }
-    },
-    tooltip: {
-        formatter: function () {
-            return '<b>' + this.series.name + '</b><br/>' +
-                this.point.y + ' ' + this.point.name.toLowerCase();
-        }
-    }
-});
-</script>
   </body>
 </html>

@@ -24,6 +24,7 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+            <!--
               <li class="dropdown notifications-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
               <i class="fa fa-bell-o">                
@@ -47,9 +48,7 @@
                       <?php 
                         while($notificacion = mysql_fetch_assoc($resultado)){
                           echo "<li><a href='notificacion/consultas.php?ver_proforma_id=".$notificacion['id_proforma']."'><i class ='fa  fa-folder-o text-yellow'></i>Cobranza ha subido la profrorma 00".$notificacion['factura']."</a></li>";
-                        $id = $notificacion['notificacion_id'];
-                        $sql = "UPDATE notificacion SET estatus = 0, contador = 0 where id_notificacion =  $id";
-                        $resultado = mysql_query($sql, $conexion);
+                        $notificacion['notificacion_id'];
                         }
                       ?>
                     </ul>
@@ -59,11 +58,11 @@
                 <a href="#">Ver todo</a>
                 </li>
               </ul>
-              </li>
+              </li>-->
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;">
-                 <span class="hidden-xs"><?php echo "Administrador: ".$_SESSION['usuario']['nombre'];?></span>
+                 <span class="hidden-xs"><?php echo "Usuario: ".$_SESSION['usuario']['nombre'];?></span>
                 </a>
 
                 <ul class="dropdown-menu">

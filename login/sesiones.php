@@ -13,7 +13,7 @@ e<?php
 		// Definimos los datos del servidor y base de datos para establecer conexión con MySQL
 		$host = 'localhost';
 	    $user = 'root';
-	    $password = '';
+	    $password = '123';
 	    $bd = 'ssp';
 	    // Ejecutamos conexión con MySQL
 	    $conexion = @mysql_connect($host, $user, $password);
@@ -50,9 +50,9 @@ e<?php
 	    	// Finalmente redireccionamos el index de los usuarios
 	    	header('Location: ../cobranza/index.php');
 
-	   		 }elseif($tupla['tipo_usuario']=='DIR'){
+	   		 }elseif($tupla['tipo_usuario']=='PROD'){
 	    	$_SESSION['usuario'] = $user;
-	    	header('Location: ../director/index.php');
+	    	header('Location: ../produccion/index.php');
 	   		 }
 	   		} else {
 	    	// Si no hay coincidencias direccionamos el login nuevamente

@@ -6,7 +6,7 @@
 	// Definimos los datos del servidor y base de datos para establecer conexión con MySQL
 	$host = 'localhost';
 	$user = 'root';
-	$password = '';
+	$password = '123';
 	$bd = 'ssp';
 	// Ejecutamos conexión con MySQL
 	$conexion = @mysql_connect($host, $user, $password);
@@ -28,7 +28,7 @@
 	//Guardamos el ultimo id insertado en proforma_id.
 		$proforma_id = mysql_insert_id();
 		//Insertamos registro dentro de la tabla notificaciones.
-		$sql1 = "INSERT INTO notificacion (id_proforma, estatus, contador) VALUES('$proforma_id', 1, 1)";
+		$sql1 = "INSERT INTO notificacion (id_proforma, estatus, contador, tipo) VALUES('$proforma_id', 1, 1, 1)";
 		$resultado = mysql_query($sql1, $conexion);
 		if($resultado != 1){
 			echo '<script language="javascript">

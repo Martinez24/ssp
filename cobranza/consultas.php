@@ -6,7 +6,7 @@
     // Definimos los datos del servidor y base de datos para establecer conexión con MySQL
     $host = 'localhost';
     $user = 'root';
-    $password = '';
+    $password = '123';
     $bd = 'ssp';
     //Consulta para colocar los acentos requeridos en los registros 
     mysql_query("SET NAMES 'utf8'");

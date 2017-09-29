@@ -7,7 +7,7 @@ session_start();
 //Definimos los datos del servidor para conectarse a la base de da datos correspondiente
 $host = 'localhost';
 $user = 'root';
-$password = '';
+$password = '123';
 $bd = 'ssp';
 $conexion = @mysql_connect($host, $user, $password);
 mysql_select_db($bd, $conexion);
@@ -20,7 +20,7 @@ if(isset($_GET['ver_proforma'])){
         $proforma_id = $_GET['imprimir'];
         $host = 'localhost';
         $user = 'root';
-        $password = '';
+        $password = '123';
         $bd = 'ssp';
         $conexion = @mysql_connect($host, $user, $password);
         @mysql_select_db($bd, $conexion);

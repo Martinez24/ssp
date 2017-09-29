@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Proyectos Vendidos | Dashboard</title>
+    <title>Proyectos en Proceso | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -52,7 +52,7 @@
         <section class="content-header">
           <h1>
             Proyectos
-            <small> Vendidos</small>
+            <small> Proceso</small>
           </h1>
         </section>
         <section class="content">
@@ -82,7 +82,7 @@
                 <?php
                   $host = 'localhost';
                   $user = 'root';
-                  $password = '';
+                  $password = '123';
                   $bd = 'ssp';
                   $conexion = @mysql_connect($host, $user, $password);
                   @mysql_select_db($bd, $conexion);

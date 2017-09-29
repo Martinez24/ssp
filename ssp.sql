@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-08-2017 a las 21:16:02
+-- Tiempo de generación: 29-09-2017 a las 21:25:33
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `cobro` (
   `porcentaje` int(3) NOT NULL,
   `id_proforma` int(11) NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cobro`
@@ -72,7 +72,10 @@ INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`, `estatus`) VALUES
 (38, 100, 3, 0),
 (39, 80, 5, 1),
 (40, 25, 6, 1),
-(41, 50, 14, 1);
+(41, 50, 14, 1),
+(42, 60, 13, 1),
+(43, 20, 15, 1),
+(44, 20, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -2612,15 +2615,18 @@ CREATE TABLE IF NOT EXISTS `notificacion` (
   `id_notificacion` int(11) NOT NULL,
   `id_proforma` int(11) NOT NULL,
   `estatus` int(11) NOT NULL,
-  `contador` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `contador` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `notificacion`
 --
 
-INSERT INTO `notificacion` (`id_notificacion`, `id_proforma`, `estatus`, `contador`) VALUES
-(3, 14, 1, 1);
+INSERT INTO `notificacion` (`id_notificacion`, `id_proforma`, `estatus`, `contador`, `tipo`) VALUES
+(3, 14, 0, 0, 1),
+(4, 15, 0, 0, 1),
+(5, 16, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2638,7 +2644,7 @@ CREATE TABLE IF NOT EXISTS `proforma` (
   `id_proyecto` int(4) NOT NULL,
   `descripcion` text NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proforma`
@@ -2647,7 +2653,9 @@ CREATE TABLE IF NOT EXISTS `proforma` (
 INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
 (8, 80, '2017-08-17', 8, 13, '2017-08-18', 5, 'Lorem\r\n                       				 ', 1),
 (13, 81, '2017-08-17', 7, 13, '2017-08-18', 4, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
-(14, 82, '2017-08-08', 6, 13, '2017-08-17', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 1);
+(14, 82, '2017-08-08', 6, 13, '2017-08-17', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
+(15, 83, '2017-08-02', 5, 13, '2017-08-22', 4, 'Zord', 1),
+(16, 87, '2017-08-25', 8, 14, '2017-08-26', 4, 'Plasma ', 1);
 
 -- --------------------------------------------------------
 
@@ -2709,7 +2717,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fecha_creacion` date DEFAULT NULL,
   `fecha_modificacion` date DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -2719,7 +2727,8 @@ INSERT INTO `usuario` (`id_empleado`, `nombre`, `password`, `email`, `tipo_usuar
 (15, 'Jose Antonio Sosa', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'sosa@plasmaautomation.com.mx', 'ADMIN', '2017-07-17', '2017-07-17', 1),
 (17, 'Ana Patricia MartÃ­nez LÃ³pez', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'patrick_2102@hotmail.com', '', '2017-07-18', '2017-07-18', 1),
 (19, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'ADMIN', '2017-07-19', '2017-07-19', 1),
-(20, 'Rosario Valle', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'rosario@plasmaautomation.com.mx', 'COBRANZA', '2017-07-27', '2017-07-27', 1);
+(20, 'Rosario Valle', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'rosario@plasmaautomation.com.mx', 'COBRANZA', '2017-07-27', '2017-07-27', 1),
+(21, 'David Mondragon', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'david.mondragon@plasmaautomation.com.mx', 'PROD', '2017-09-04', '2017-09-04', 1);
 
 -- --------------------------------------------------------
 
@@ -2828,7 +2837,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `cobro`
 --
 ALTER TABLE `cobro`
-  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+  MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -2843,12 +2852,12 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `notificacion`
 --
 ALTER TABLE `notificacion`
-  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_notificacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `proforma`
 --
 ALTER TABLE `proforma`
-  MODIFY `id_proforma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id_proforma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
@@ -2858,7 +2867,7 @@ ALTER TABLE `proyecto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --
