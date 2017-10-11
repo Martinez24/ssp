@@ -25,9 +25,10 @@
     if($_POST['agrega_proyecto']){
         extract($_POST);
         $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
-		 				c.No_Cliente,c.nombre as nombre, 
+		 				c.No_Cliente,c.nombre as nombre, c.domicilio as domicilio, c.rfc as rfc, c.id_municipio as municipio, c.correo as correo, c.telefono as tel, c.c_p as cp, c.nu_cliente as no_cliente, c.id_estado as estado, 
 		 					v.id_vendedor, v.nombre as vendedor, 
-		 						pr.id, pr.modelo as modelo from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join vendedor v on v.id_vendedor = p.id_vendedor 
+		 						pr.id, pr.modelo as modelo
+                                 from proforma p inner join cliente c on c.No_Cliente = p.id_cliente inner join vendedor v on v.id_vendedor = p.id_vendedor 
 		 							inner join proyecto pr on pr.id = p.id_proyecto 
 										WHERE id_proforma = $proforma_id";
         $resultado = mysql_query($sql, $conexion);

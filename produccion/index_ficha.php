@@ -88,35 +88,189 @@
           <!-- info row -->
 
           <div class="row invoice-info">
-            <div class="col-sm-6 invoice-col" id="info-proyecto">
+            <div class="col-sm-9 invoice-col" id="info-proyecto">
             <?php
             
               if(isset($tarea['proyecto']['no_factura'])){ 
-                echo "No. de factura del proyecto: <b>00".$tarea['proyecto']['no_factura']."<b><br>";
+                echo "No. de factura del proyecto: <b>00".$tarea['proyecto']['no_factura']."</b><br>";
 
-                echo "<div class='col-sm-4 invoice-col'>
+                echo "<div class='col-xs-3'>
                       <address>
-                      <strong>Cliente</strong><br>
-                      Hola <br>
-                      Como<br>
+                      <h5>Cliente</h5>
                       </address>
-
-                      </div>";
-                echo "<address>";
-                echo "<b>Etiqueta del proyecto: </b>".$tarea['proyecto']['no_factura']."  "."<b> Modelo de la máquina: </b>".$tarea['proyecto']['modelo']."<br>";
-               
-                echo "<b>Nombre de la máquina: </b>".$tarea['proyecto']['maquina']."<br>";
-                echo "<b>Nombre del cliente: </b>".$tarea['proyecto']['nombre']."<br>";
-                echo "<b>Destino: </b>".$tarea['proyecto']['destino']."<br>";
-                echo "<b>Fecha entrega: </b>".$tarea['proyecto']['fecha_entrega']."<br>";
-                echo "<b>Fecha creación: </b>".$tarea['proyecto']['fecha_creacion']."<br>";
-                echo "</address>";
+                        <b>No. Cliente: </b>".$tarea['proyecto']['no_cliente']."<br>
+                        <b>Nombre: </b><br>".$tarea['proyecto']['nombre']."<br>
+                        <b>Domicilio: </b><br>".$tarea['proyecto']['domicilio']."<br>
+                        <b>Ciudad: </b><br>".$tarea['proyecto']['municipio']."<br>
+                        ".$tarea['proyecto']['estado']."
+                      </div>";                
+                echo "<div class='col-sm-3 invoice-col'>
+                <br>
+                <br>
+                      <b>CP: </b><br>".$tarea['proyecto']['cp']."<br>
+                      <b>RFC: </b><br>".$tarea['proyecto']['rfc']."<br>
+                      <b>Teléfono: </b><br>".$tarea['proyecto']['tel']."<br>
+                      <b>Correo: </b><br>".$tarea['proyecto']['correo']."<br>
+                      </div>";  
+                echo "<div class='col-sm-3 invoice-col'>
+                      <address>
+                      <h4>Vendedor</h4>
+                      </address>
+                        <b>Nombre del vendedor: </b><br>".$tarea['proyecto']['vendedor']."<br>
+                      </div>"; 
+                echo "<div class='col-sm-3 invoice-col'>
+                      <address>
+                      <h4>Proyecto</h4>
+                      </address>
+                        <b>Fecha inicio: </b><br>".$tarea['proyecto']['fecha_inicio']."<br>
+                        <b>Fecha entrega: </b><br>".$tarea['proyecto']['fecha_entrega']."<br>
+                        <b>Descripción: </b><br>".$tarea['proyecto']['descripcion']."<br>
+                      </div>"; 
+              
               }
             ?>
             </div>
             <img class="pull-right" src="../assets/img/gpa.png" width="150">
             <!-- /.col -->
+            
           </div>
+        <div class="box box-default">
+          <div class="box-header with-border"> 
+          <h3 class="box-title">Ficha Técnica</h3>
+            <div class="pull-right box-tools" >
+              <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title data-original-title="Collapse" aria>
+                <i class="fa fa-minus"></i>
+              </button>
+            </div>
+            <div class="box-body pad" style="display: block;">
+              <div class="col-md-2">
+                  <div class="form-group">
+                  <h5>Tipo de servicio</h5>
+                  <!--Inicia formulario de ficha tecnica-->
+                    <form method="post" action="proyecto.php" enctype="multipart/form-data" id="form">
+                      <div class="form-group">
+                         <label for="cantidad">Cantidad</label>
+                          <input type="number" name="cantida" required id="cantidad" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                           </div>
+                            <div class="form-group">
+                             <label for="servicio">Servicio:</label>
+                              <input type="text" name="servicio" id="servicio" placeholder="Ej: Pantografo, Maquila" class="form-control">
+                            </div>
+                           <div class="form-group">
+                            <label for="modelo">Modelo:</label>
+                             <input type="modelo" name="modelo" id="modelo" placeholder="Ej: Dinocut" class="form-control">
+                            </div> 
+                          <div class="form-group">
+                            <label for="descripcion">Descripción:</label>
+                             <input type="edit" name="modelo" id="modelo" placeholder="Ej: 10x20" class="form-control">
+                            </div>  
+
+                  </div>
+                </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                           <h5>Sistema de corte</h5>
+                            <form method="post" action="proyecto.php" enctype="multipart/form-data" id="form">
+                              <div class="form-group">
+                               <label for="cantidad_s">Cantidad</label>
+                                 <input type="number" name="cantida_s" required id="cantidad_s" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                              </div>
+                              <div class="form-group">
+                                <label for="sistema">Sistema:</label>
+                                  <input type="text" name="sistema" id="sistema" placeholder="Ej: Plasma, oxicorte" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="modelo_s">Modelo:</label>
+                                 <input type="text" name="modelo_s" id="modelo_s" placeholder="Ej: XPR-300" class="form-control">
+                              </div> 
+                              <div class="form-group">
+                               <label for="voltaje">Voltaje:</label>
+                              <input type="number" name="voltaje" id="voltaje" placeholder="Ej: 440" class="form-control">
+                              </div>  
+                              <div class="form-group">
+                               <label for="observacion">Observación:</label>
+                              <textarea name="observacion" rows="2" cols="10" class="form-control"></textarea>
+                              </div> 
+                                    
+                          </div>
+                        </div>    
+                        <div class="col-md-2">
+                          <div class="form-group">
+                           <h5>Controlador</h5><br>
+                              <div class="form-group">
+                               <label for="cantidad_c">Cantidad</label>
+                                 <input type="number" name="cantida_c" required id="cantidad_c" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                              </div>
+                              <div class="form-group">
+                                <label for="controlador">Controlador:</label>
+                                  <input type="text" name="controlador" id="controlador" placeholder="Ej: Edge" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="ejes">No. Ejes</label>
+                                 <input type="number" name="ejes" id="ejes" placeholder="Ej: XPR-300" class="form-control">
+                              </div>  
+                              <div class="form-group">
+                               <label for="sd">Servo y Drive:</label>
+                                <input type="text" name="sd" id="sd" placeholder="Ej: Bosch" class="form-control">
+                              </div> 
+                              <div class="form-group">
+                               <label for="observacion_c">Observación:</label>
+                              <textarea name="observacion_c" rows="2" cols="10" class="form-control"></textarea>
+                              </div> 
+                                    
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                           <h5>Sensor de altura</h5>
+                              <div class="form-group">
+                               <label for="cantidad_a">Cantidad</label>
+                                 <input type="number" name="cantida_s" required id="cantidad_a" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                              </div>
+                              <div class="form-group">
+                                <label for="sensor">Sensor de altura:</label>
+                                  <input type="text" name="controlador" id="controlador" placeholder="Ej: Sensor connect" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="modelo_a">Modelo</label>
+                                 <input type="text" name="modelo" id="modelo" placeholder="Ej: THC" class="form-control">
+                              </div> 
+                              <div class="form-group">
+                               <label for="observacion_c">Observación:</label>
+                              <textarea name="observacion_c" rows="2" cols="10" class="form-control"></textarea>
+                              </div> 
+                          </div>                        
+                        </div>
+                        <div class="col-md-3">
+                        <div class="form-group">
+                           <h5>Motor</h5>
+                              <div class="form-group">
+                               <label for="cantidad_m">Cantidad</label>
+                                 <input type="number" name="cantida_m" required id="cantidad_m" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                              </div>
+                              <div class="form-group">
+                                <label for="motor">Motor</label>
+                                  <input type="text" name="motor" id="motor" placeholder="Ej: TPK 010S" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="no_ejes">No. de ejes</label>
+                                 <input type="text" name="no_ejes" id="no_ejes" placeholder="Ej: MSK050" class="form-control">
+                              </div> 
+                              <div class="form-group">
+                               <label for="observacion_c">Observación:</label>
+                              <textarea name="observacion_m" rows="2" cols="10" class="form-control"></textarea>
+                              </div> 
+                          </div>
+                        </div> 
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <h5><label for="detalle">Detalle de trabajos adicionales mecanicos y electrónicos</label></h5>
+                            <textarea name="detalle" rows="2" cols="3" class="form-control"></textarea>
+                          </div>
+                        </div>
+          </div>
+          </div>
+          
           <!-- /.row -->
 
           <!-- Table row -->
