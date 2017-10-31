@@ -37,6 +37,7 @@
         $_SESSION['tarea'] = $tarea;
         header("Location: index_gestion.php");
     }
+
     /*
     // Se comprueba la existencia de la petición post que corresponde al nombre agrega_tarea
    if($_POST['agrega_tarea']){
@@ -122,5 +123,7 @@
          $_SESSION['ficha'] = $ficha;
          header('Location: index_ficha.php');
 	}
+
+    
 
 ?>

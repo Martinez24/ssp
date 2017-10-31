@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-09-2017 a las 21:25:33
+-- Tiempo de generación: 31-10-2017 a las 21:07:32
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -125,6 +125,23 @@ INSERT INTO `estado` (`id_estado`, `estado`) VALUES
 (30, 'Veracruz'),
 (31, 'Yucatán'),
 (32, 'Zacatecas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ficha`
+--
+
+CREATE TABLE IF NOT EXISTS `ficha` (
+  `id_ficha` int(2) NOT NULL,
+  `id_servicio` int(2) NOT NULL,
+  `id_corte` int(2) NOT NULL,
+  `id_controlador` int(2) NOT NULL,
+  `id_sensor` int(2) NOT NULL,
+  `id_posicion` int(2) NOT NULL,
+  `id_motor` int(2) NOT NULL,
+  `detalle` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2652,7 +2669,7 @@ CREATE TABLE IF NOT EXISTS `proforma` (
 
 INSERT INTO `proforma` (`id_proforma`, `no_factura`, `fecha_inicio`, `id_cliente`, `id_vendedor`, `fecha_entrega`, `id_proyecto`, `descripcion`, `estatus`) VALUES
 (8, 80, '2017-08-17', 8, 13, '2017-08-18', 5, 'Lorem\r\n                       				 ', 1),
-(13, 81, '2017-08-17', 7, 13, '2017-08-18', 4, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
+(13, 81, '2017-08-17', 7, 13, '2017-08-18', 4, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n                       				 ', 1),
 (14, 82, '2017-08-08', 6, 13, '2017-08-17', 2, 'DescripciÃ³n del proyecto\r\n                       				 ', 1),
 (15, 83, '2017-08-02', 5, 13, '2017-08-22', 4, 'Zord', 1),
 (16, 87, '2017-08-25', 8, 14, '2017-08-26', 4, 'Plasma ', 1);
@@ -2679,6 +2696,20 @@ INSERT INTO `proyecto` (`id`, `no_serie`, `marca`, `modelo`) VALUES
 (3, 'P-126', 'Azimatronics', 'Bird Cut'),
 (4, 'P-189', 'Azimatronics', 'Shark Cut'),
 (5, 'P-200', 'Plasma Automation', 'Paper-cut');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicio`
+--
+
+CREATE TABLE IF NOT EXISTS `servicio` (
+  `id_servicio` int(5) NOT NULL,
+  `cantidad` int(2) NOT NULL,
+  `servicio` varchar(25) NOT NULL,
+  `modelo` varchar(25) NOT NULL,
+  `descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2780,6 +2811,12 @@ ALTER TABLE `estado`
   ADD PRIMARY KEY (`id_estado`);
 
 --
+-- Indices de la tabla `ficha`
+--
+ALTER TABLE `ficha`
+  ADD PRIMARY KEY (`id_ficha`);
+
+--
 -- Indices de la tabla `municipios`
 --
 ALTER TABLE `municipios`
@@ -2802,6 +2839,12 @@ ALTER TABLE `proforma`
 --
 ALTER TABLE `proyecto`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `servicio`
+--
+ALTER TABLE `servicio`
+  ADD PRIMARY KEY (`id_servicio`);
 
 --
 -- Indices de la tabla `sucursal`
@@ -2844,6 +2887,11 @@ ALTER TABLE `cobro`
 ALTER TABLE `estado`
   MODIFY `id_estado` int(3) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla estado.',AUTO_INCREMENT=33;
 --
+-- AUTO_INCREMENT de la tabla `ficha`
+--
+ALTER TABLE `ficha`
+  MODIFY `id_ficha` int(2) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `municipios`
 --
 ALTER TABLE `municipios`
@@ -2863,6 +2911,11 @@ ALTER TABLE `proforma`
 --
 ALTER TABLE `proyecto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `servicio`
+--
+ALTER TABLE `servicio`
+  MODIFY `id_servicio` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

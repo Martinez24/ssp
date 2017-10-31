@@ -57,12 +57,22 @@ include('../login/validarsesion.php');
             <img class="profile-user-img img-responsive img-circle" src="../assets/img/gpa.png" alt="Grupo Plasma Automation">
             <h4> <?php echo $_SESSION['usuario']['nombre']?></h4>
                 <h3>Bienvenido</h3>  
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.         
+                <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                  <div class="small-box bg-red">
+                  <div class="inner">
+                  <h3>56</h3>
+                    <p>Proyectos recientes</p>
+                  </div>
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="" class="small-box-footer">Más info.
+                    <i class="fa fa-arrow-circle-rigth"></i>
+                    </a>
+                  </div>
+                </div>                  
+                </div>   
             </div>
             </div>
             </div>

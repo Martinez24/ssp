@@ -117,20 +117,20 @@
                       <center><img class="img-responsive " src="./assets/img/admn.jpg" alt="Grupo Plasma Automation"></center>
             </div>
             <div class="panel panel-danger">
-                   <!--Inicio de gráfica de pagos-->
-            <section class="col-lg-7 connectedSortable ui-sortable">
-            <div class="nav-tabs-costum" style="cursor:move">
-            <ul class="nav nav-tabs pull-right ui-sortable-handle">
-              <li class="active"></li>
-              <li class="pull-left header">
-                <i class="fa fa-bar-char"></i>
-                Estatus
-              </li>
-            </ul>
+              <!--Inicio de gráfica de pagos
+                <section class="col-lg-7 connectedSortable ui-sortable">-->
+                    <div class="nav-tabs-costum" style="cursor:move">
+                        <ul class="nav nav-tabs pull-right ui-sortable-handle">
+                          <li class="active"></li>
+                          <li class="pull-left header">
+                             <i class="fa fa-bar-char"></i>
+                                Estatus
+                          </li>
+                       </ul>
             <div class="tab-content no-padding">
              <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<?php 
-$sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
+            <?php 
+                $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fecha_inicio, p.fecha_entrega as fecha_entrega, p.descripcion as descripcion,
                         c.No_Cliente,c.nombre as nombre,
                          co.id_cobro, co.porcentaje as porcentaje, 
                             v.id_vendedor, v.nombre as vendedor, 
@@ -139,29 +139,27 @@ $sql = "SELECT p.id_proforma, p.no_factura as no_factura, p.fecha_inicio as fech
                                 inner join vendedor v on v.id_vendedor = p.id_vendedor 
                                 inner join cobro co on p.id_proforma = co.id_proforma
                                     inner join proyecto pr on pr.id = p.id_proyecto";
-$resultado = mysql_query($sql, $conexion);
-
-
-?>
-<table id="datatable">
-    <thead>
-    <tr>
-        <th>Cliente</th>
-        <th>Porcentaje del pago</th>
-     </tr>
-    </thead>
-<tbody>
-    <?php 
-    while ($porcentaje = mysql_fetch_assoc($resultado)){
-        echo "<tr><th>".$porcentaje['nombre']."</th> <td>".$porcentaje['porcentaje']."</td></tr>";
-    }
-    ?>
-    </tr> 
-    </tbody>
-</table>
+                $resultado = mysql_query($sql, $conexion);
+            ?>
+            <table id="datatable">
+              <thead>
+                <tr>
+                   <th>Cliente</th>
+                   <th>Porcentaje del pago</th>
+                </tr>
+           </thead>
+          <tbody>
+               <?php 
+                    while ($porcentaje = mysql_fetch_assoc($resultado)){
+                        echo "<tr><th>".$porcentaje['nombre']."</th> <td>".$porcentaje['porcentaje']."</td></tr>";
+                   }
+                ?>
+                </tr> 
+          </tbody>
+            </table>
+        </div>
             </div>
-            </div>
-            </section>
+          
 <!-- Fin de graficas-->
             </div>
             <div class="panel-footer"></div>

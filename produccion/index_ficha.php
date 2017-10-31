@@ -43,10 +43,10 @@
     <!-- Bootstrap 3.3.5 -->
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <!--COMPONENTES PARA PLUGIN SELECT2-->
-    <link rel="stylesheet" href="assets/plugins/select2/select2.min.css">
-    <script src="assets/plugins/select2/select2.full.min.js"></script>
-    <link href="assets/plugins/pnotify/css/pnotify.custom.min.css" rel="stylesheet">
-    <script src="assets/plugins/pnotify/js/pnotify.custom.min.js"></script>
+    <link rel="stylesheet" href="../assets/plugins/select2/select2.min.css">
+    <script src="../assets/plugins/select2/select2.full.min.js"></script>
+    <link href="../assets/plugins/pnotify/css/pnotify.custom.min.css" rel="stylesheet">
+    <script src="../assets/plugins/pnotify/js/pnotify.custom.min.js"></script>
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">
     <div class="wrapper">
@@ -137,37 +137,40 @@
         <div class="box box-default">
           <div class="box-header with-border"> 
           <h3 class="box-title">Ficha Técnica</h3>
-            <div class="pull-right box-tools" >
-              <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title data-original-title="Collapse" aria>
-                <i class="fa fa-minus"></i>
-              </button>
-            </div>
             <div class="box-body pad" style="display: block;">
               <div class="col-md-2">
                   <div class="form-group">
                   <h5>Tipo de servicio</h5>
                   <!--Inicia formulario de ficha tecnica-->
-                    <form method="post" action="proyecto.php" enctype="multipart/form-data" id="form">
+                    <form id="frm-alumno" method="post" action="ficha_tecnica.php" enctype="multipart/form-data" id="form">
                       <div class="form-group">
-                         <label for="cantidad">Cantidad</label>
+  <!--DIV Tipo servicio-->
+                         <label for="cantidad">Cantidad:</label>
                           <input type="number" name="cantida" required id="cantidad" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                            </div>
                             <div class="form-group">
-                             <label for="servicio">Servicio:</label>
-                              <input type="text" name="servicio" id="servicio" placeholder="Ej: Pantografo, Maquila" class="form-control">
+                             <label>Tipo de servicio:</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">Pantografo</option>
+                               <option value="Retrofit">Retrofit</option>
+                               <option value="Maquila">Maquila</option>
+                               <option value="Otros">Otros</option>
+                             </select>
                             </div>
                            <div class="form-group">
                             <label for="modelo">Modelo:</label>
-                             <input type="modelo" name="modelo" id="modelo" placeholder="Ej: Dinocut" class="form-control">
+                             <input type="text" name="modelo" id="modelo" placeholder="Ej: Dinocut" class="form-control">
                             </div> 
                           <div class="form-group">
                             <label for="descripcion">Descripción:</label>
-                             <input type="edit" name="modelo" id="modelo" placeholder="Ej: 10x20" class="form-control">
+                             <textarea name="descripcion" rows="2" cols="10" class="form-control"></textarea>
                             </div>  
 
                   </div>
                 </div>
+
                         <div class="col-md-2">
+  <!--DIV Sistema de corte
                           <div class="form-group">
                            <h5>Sistema de corte</h5>
                             <form method="post" action="proyecto.php" enctype="multipart/form-data" id="form">
@@ -176,8 +179,14 @@
                                  <input type="number" name="cantida_s" required id="cantidad_s" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
-                                <label for="sistema">Sistema:</label>
-                                  <input type="text" name="sistema" id="sistema" placeholder="Ej: Plasma, oxicorte" class="form-control">
+                                <label>Tipo de servicio:</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">Plasma</option>
+                               <option>Oxicorte</option>
+                               <option>Laser</option>
+                               <option>Waterjet</option>
+                               <option>Otros</option>
+                             </select>
                               </div>
                               <div class="form-group">
                                 <label for="modelo_s">Modelo:</label>
@@ -195,6 +204,7 @@
                           </div>
                         </div>    
                         <div class="col-md-2">
+ <!--DIV Controlador
                           <div class="form-group">
                            <h5>Controlador</h5><br>
                               <div class="form-group">
@@ -202,8 +212,13 @@
                                  <input type="number" name="cantida_c" required id="cantidad_c" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
-                                <label for="controlador">Controlador:</label>
-                                  <input type="text" name="controlador" id="controlador" placeholder="Ej: Edge" class="form-control">
+                                <label>Controlador:</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">Edge TI</option>
+                               <option>Edge Pro</option>
+                               <option>Edge Connect</option>
+                               <option>Otros</option>
+                             </select>
                               </div>
                               <div class="form-group">
                                 <label for="ejes">No. Ejes</label>
@@ -221,6 +236,7 @@
                           </div>
                         </div>
                         <div class="col-md-2">
+ <!--DIV sensor
                           <div class="form-group">
                            <h5>Sensor de altura</h5>
                               <div class="form-group">
@@ -228,8 +244,13 @@
                                  <input type="number" name="cantida_s" required id="cantidad_a" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
-                                <label for="sensor">Sensor de altura:</label>
-                                  <input type="text" name="controlador" id="controlador" placeholder="Ej: Sensor connect" class="form-control">
+                                 <label>Sensor de altura</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">Sensor Connect</option>
+                               <option>Sensor TI</option>
+                               <option>Sensor Arcglide</option>
+                               <option>Otros</option>
+                             </select>
                               </div>
                               <div class="form-group">
                                 <label for="modelo_a">Modelo</label>
@@ -242,14 +263,61 @@
                           </div>                        
                         </div>
                         <div class="col-md-3">
+  <!--DIV GUIAS
                         <div class="form-group">
-                           <h5>Motor</h5>
+                           <h5>Posición</h5>
                               <div class="form-group">
-                               <label for="cantidad_m">Cantidad</label>
-                                 <input type="number" name="cantida_m" required id="cantidad_m" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+            <!--Posición
+                               <label>Posición</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">Trasversal</option>
+                               <option>Dual Gantry</option>
+                               <option>Gantry</option>
+                             </select>
                               </div>
                               <div class="form-group">
-                                <label for="motor">Motor</label>
+            <!---Guía
+                                 <label>Guía</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">HSR20A1SS</option>
+                               <option>HSR25A1SS</option>
+                             </select>
+                              </div>
+                               <div class="form-group">
+            <!---Balero
+                                 <label>Balero</label>
+                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                               <option selected="selected">HSR20</option>
+                               <option>HSR25</option>
+                             </select>
+                              <label for="c">C:</label>
+                                <input type="number" name="c" id="c" placeholder="Ej: 1" class="form-control">
+                              </div> 
+                              </div>
+            <!--Cremallera
+                              <div class="form-group">
+                               <label for="cremallera">Cremallera:</label>
+                              <input type="text" name="cremallera" id="cremallera" placeholder="Ej: BAL-0112" class="form-control">
+                              </div> 
+                            <div class="form-group">
+                               <label for="piñon">Piñon:</label>
+                            <input type="text" name="piñon" id="piñon" placeholder="Ej: BAL-0147" class="form-control">
+                            <label for="c1">C:</label>
+                                <input type="number" name="c1" id="c1" placeholder="Ej: 2" class="form-control">
+                              </div>
+                          </div>
+      <!--Motor
+                  <div id="alumnos" class="row">
+                    <div id="lo-que-vamos-a-copiar">
+                      <div class="col-xs-4">
+                        <div class="well well-sm">
+                          <h5>Motor</h5>
+                              <div class="form-group">
+                                 <label for="cantidad_m">Cantidad</label>
+                                  <input type="number" name="cantida_m" required id="cantidad_m" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                              </div>
+                              <div class="form-group">
+                                 <label for="motor">Motor</label>
                                   <input type="text" name="motor" id="motor" placeholder="Ej: TPK 010S" class="form-control">
                               </div>
                               <div class="form-group">
@@ -257,19 +325,29 @@
                                  <input type="text" name="no_ejes" id="no_ejes" placeholder="Ej: MSK050" class="form-control">
                               </div> 
                               <div class="form-group">
-                               <label for="observacion_c">Observación:</label>
-                              <textarea name="observacion_m" rows="2" cols="10" class="form-control"></textarea>
-                              </div> 
-                          </div>
-                        </div> 
-                        <div class="col-md-12">
+                                <label for="observacion_c">Observación:</label>
+                                <textarea name="observacion_m" rows="2" cols="10" class="form-control"></textarea>
+                              </div>  
+        </div>
+    </div>            
+</div>
+          <div class="col-xs-4">
+            <div class="well">
+             <button id="btn-alumno-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar</button>                
+            </div>
+          </div>
+</div>
+    <!--Pivote
+                   <div class="col-md-12">
                           <div class="form-group">
                             <h5><label for="detalle">Detalle de trabajos adicionales mecanicos y electrónicos</label></h5>
                             <textarea name="detalle" rows="2" cols="3" class="form-control"></textarea>
                           </div>
-                        </div>
+                        </div>-->
+                      
           </div>
           </div>
+</form>
           
           <!-- /.row -->
 
@@ -281,7 +359,7 @@
           <div class="row no-print">
             <div class="col-xs-12">
               <!--<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>-->
-              <a href="gestiones.php?guardar_tarea" class="btn btn-success pull-right" id="guardar-tarea"><i class="fa fa-check-circle-o"></i> Guardar Tarea
+              <!--<a href="ficha_tecnica.php?agrega_ficha" class="btn btn-success pull-right" id="guardar-ficha"><i class="fa fa-check-circle-o"></i> Guardar Ficha-->
               </a>
               <!--<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
                 <i class="fa fa-download"></i> Generate PDF
@@ -331,18 +409,21 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div>
-    <!--MODALES-->
+    <!--JQuery 2.2.3 -->
+    <script src="../assets/plugins/jQuery/jquery-2.2.4.min.js"></script>
+    <!--SELECT2-->
+    <script src="../assets/plugins/select2/select2.full.min.js"></script>
     <!-- Slimscroll -->
-    <script src="assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="../assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="assets/dist/js/app.min.js"></script>
+    <script src="../assets/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="assets/dist/js/demo.js"></script>
-    <script src="assets/js/jquery.selectedoption.plugin.js"></script>
-    <script src="assets/plugins/format-number/jquery.format-number.plugin.js"></script>
-    <script src="assets/js/parsley.js"></script>
+    <script src="../assets/dist/js/demo.js"></script>
+    <script src="../assets/js/jquery.selectedoption.plugin.js"></script>
+    <script src="../assets/plugins/format-number/jquery.format-number.plugin.js"></script>
+    <script src="../assets/js/parsley.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $('#agregar-proyecto').click(function(){
@@ -370,5 +451,37 @@
         $('#form-agrega-tarea').parsley('validate');
       });
     </script>
+    <script>
+    $(document).ready(function(){
+        
+        // El formulario que queremos replicar
+        var formulario_alumno = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-alumno-agregar").click(function(){
+    // Agregamos el formulario
+    $("#alumnos").prepend(formulario_alumno);
+
+    // Agregamos un boton para retirar el formulario
+    $("#alumnos .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-alumno" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#alumnos .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#alumnos").on('click', '.btn-retirar-alumno', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-alumno").submit(function(){
+            return $(this).validate();
+        });
+    })
+</script>
+
   </body>
 </html>
