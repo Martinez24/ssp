@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 21:07:32
+-- Tiempo de generación: 03-11-2017 a las 20:05:56
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -80,6 +80,40 @@ INSERT INTO `cobro` (`id_cobro`, `porcentaje`, `id_proforma`, `estatus`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `controlador`
+--
+
+CREATE TABLE IF NOT EXISTS `controlador` (
+  `id_controlador` int(11) NOT NULL,
+  `cantidad_c` int(5) NOT NULL,
+  `controlador` varchar(25) NOT NULL,
+  `ejes` int(3) NOT NULL,
+  `s_d` varchar(25) NOT NULL,
+  `observacion_c` varchar(75) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `controlador`
+--
+
+INSERT INTO `controlador` (`id_controlador`, `cantidad_c`, `controlador`, `ejes`, `s_d`, `observacion_c`) VALUES
+(1, 0, 'Edge Connect', 4, '', 'N/A'),
+(2, 0, 'Edge Connect', 4, 'Bosch', 'N/A'),
+(3, 0, 'Edge Connect', 4, 'Bosch', 'N/A'),
+(4, 0, 'Edge Connect', 4, 'Bosch', 'N/A'),
+(5, 0, 'Edge Connect', 4, 'Bosch', 'N/A'),
+(6, 1, 'Edge Connect', 4, 'Bosch', 'N/A'),
+(7, 1, 'Edge TI', 4, 'Bosch', 'Lo'),
+(8, 1, 'Edge TI', 4, 'Bosch', 'Lo'),
+(9, 1, 'Edge TI', 0, '', ''),
+(10, 1, 'Edge TI', 0, '', ''),
+(11, 1, 'Edge TI', 0, '', ''),
+(12, 1, 'Edge TI', 0, '', ''),
+(13, 1, 'Edge TI', 0, '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `estado`
 --
 
@@ -141,6 +175,23 @@ CREATE TABLE IF NOT EXISTS `ficha` (
   `id_posicion` int(2) NOT NULL,
   `id_motor` int(2) NOT NULL,
   `detalle` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `guia`
+--
+
+CREATE TABLE IF NOT EXISTS `guia` (
+  `id_guia` int(11) NOT NULL,
+  `posicion` varchar(15) NOT NULL,
+  `guia` varchar(30) NOT NULL,
+  `balero` varchar(30) NOT NULL,
+  `c` int(11) NOT NULL,
+  `cremallera` varchar(30) NOT NULL,
+  `piñon` varchar(30) NOT NULL,
+  `c1` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2700,6 +2751,20 @@ INSERT INTO `proyecto` (`id`, `no_serie`, `marca`, `modelo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sensor`
+--
+
+CREATE TABLE IF NOT EXISTS `sensor` (
+  `id_sensor` int(11) NOT NULL,
+  `cantidad_s` int(4) NOT NULL,
+  `sensor` varchar(25) NOT NULL,
+  `modelo_s` varchar(25) NOT NULL,
+  `observacion_s` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `servicio`
 --
 
@@ -2709,7 +2774,65 @@ CREATE TABLE IF NOT EXISTS `servicio` (
   `servicio` varchar(25) NOT NULL,
   `modelo` varchar(25) NOT NULL,
   `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id_servicio`, `cantidad`, `servicio`, `modelo`, `descripcion`) VALUES
+(1, 0, '', '', ''),
+(2, 0, '', 'DIno', '10*20'),
+(3, 1, 'Pantografo', 'Dino', '10*20'),
+(4, 1, 'Pantografo', 'Dino', '10*20'),
+(5, 1, 'Pantografo', 'Dino', '10*20'),
+(6, 1, 'Pantografo', 'Dino', '10*20'),
+(7, 1, 'Pantografo', 'Dino', '10*20'),
+(8, 1, 'Pantografo', 'Dino', '10*20'),
+(9, 1, 'Pantografo', 'Dino', '10*20'),
+(10, 1, 'Pantografo', 'Dino', '10'),
+(11, 1, 'Pantografo', 'Dino', '10*20'),
+(12, 1, 'Pantografo', 'Dino', '10*20'),
+(13, 1, 'Pantografo', 'Dino', '10*20'),
+(14, 1, 'Pantografo', '', ''),
+(15, 1, 'Pantografo', '', ''),
+(16, 1, 'Pantografo', '', ''),
+(17, 1, 'Pantografo', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sistema`
+--
+
+CREATE TABLE IF NOT EXISTS `sistema` (
+  `id_sistema` int(11) NOT NULL,
+  `cantidad_s` int(11) NOT NULL,
+  `sistema` varchar(25) NOT NULL,
+  `modelo_s` varchar(25) NOT NULL,
+  `voltaje` varchar(5) NOT NULL,
+  `observacion` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `sistema`
+--
+
+INSERT INTO `sistema` (`id_sistema`, `cantidad_s`, `sistema`, `modelo_s`, `voltaje`, `observacion`) VALUES
+(1, 1, 'Plasma', 'XPR-300', '440', ''),
+(2, 1, 'Plasma', 'XPR-300', '440', '10'),
+(3, 1, 'Plasma', 'XPR-300', '440', '10'),
+(4, 1, 'Plasma', 'XPR-300', '440', '10'),
+(5, 1, 'Plasma', 'XPR-300', '440', '10'),
+(6, 1, 'Plasma', 'XPR-300', '440', '10'),
+(7, 1, 'Plasma', 'XPR-300', '440', '10'),
+(8, 1, 'Plasma', 'XPR-300', '440', '10'),
+(9, 1, 'Plasma', 'XPR-300', '440', '10'),
+(10, 1, 'Plasma', '', '', ''),
+(11, 1, 'Plasma', '', '', ''),
+(12, 1, 'Plasma', '', '', ''),
+(13, 1, 'Plasma', '', '', ''),
+(14, 1, 'Plasma', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -2805,6 +2928,12 @@ ALTER TABLE `cobro`
   ADD UNIQUE KEY `id_proforma` (`id_proforma`);
 
 --
+-- Indices de la tabla `controlador`
+--
+ALTER TABLE `controlador`
+  ADD PRIMARY KEY (`id_controlador`);
+
+--
 -- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
@@ -2815,6 +2944,12 @@ ALTER TABLE `estado`
 --
 ALTER TABLE `ficha`
   ADD PRIMARY KEY (`id_ficha`);
+
+--
+-- Indices de la tabla `guia`
+--
+ALTER TABLE `guia`
+  ADD PRIMARY KEY (`id_guia`);
 
 --
 -- Indices de la tabla `municipios`
@@ -2841,10 +2976,22 @@ ALTER TABLE `proyecto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `sensor`
+--
+ALTER TABLE `sensor`
+  ADD PRIMARY KEY (`id_sensor`);
+
+--
 -- Indices de la tabla `servicio`
 --
 ALTER TABLE `servicio`
   ADD PRIMARY KEY (`id_servicio`);
+
+--
+-- Indices de la tabla `sistema`
+--
+ALTER TABLE `sistema`
+  ADD PRIMARY KEY (`id_sistema`);
 
 --
 -- Indices de la tabla `sucursal`
@@ -2882,6 +3029,11 @@ ALTER TABLE `cliente`
 ALTER TABLE `cobro`
   MODIFY `id_cobro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
+-- AUTO_INCREMENT de la tabla `controlador`
+--
+ALTER TABLE `controlador`
+  MODIFY `id_controlador` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
@@ -2891,6 +3043,11 @@ ALTER TABLE `estado`
 --
 ALTER TABLE `ficha`
   MODIFY `id_ficha` int(2) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `guia`
+--
+ALTER TABLE `guia`
+  MODIFY `id_guia` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
@@ -2912,10 +3069,20 @@ ALTER TABLE `proforma`
 ALTER TABLE `proyecto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT de la tabla `sensor`
+--
+ALTER TABLE `sensor`
+  MODIFY `id_sensor` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_servicio` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT de la tabla `sistema`
+--
+ALTER TABLE `sistema`
+  MODIFY `id_sistema` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

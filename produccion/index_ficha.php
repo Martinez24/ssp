@@ -146,11 +146,11 @@
                       <div class="form-group">
   <!--DIV Tipo servicio-->
                          <label for="cantidad">Cantidad:</label>
-                          <input type="number" name="cantida" required id="cantidad" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                          <input type="number" name="cantidad" required id="cantidad" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                            </div>
                             <div class="form-group">
                              <label>Tipo de servicio:</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                             <select name="servicio" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">Pantografo</option>
                                <option value="Retrofit">Retrofit</option>
                                <option value="Maquila">Maquila</option>
@@ -164,29 +164,26 @@
                           <div class="form-group">
                             <label for="descripcion">Descripción:</label>
                              <textarea name="descripcion" rows="2" cols="10" class="form-control"></textarea>
-                            </div>  
-
-                  </div>
-                </div>
-
-                        <div class="col-md-2">
-  <!--DIV Sistema de corte
+              </div> 
+                  </div>  
+                  </div>                             
+                    <div class="col-md-2">
+  <!--DIV Sistema de corte-->
                           <div class="form-group">
                            <h5>Sistema de corte</h5>
-                            <form method="post" action="proyecto.php" enctype="multipart/form-data" id="form">
                               <div class="form-group">
                                <label for="cantidad_s">Cantidad</label>
-                                 <input type="number" name="cantida_s" required id="cantidad_s" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                                 <input type="number" name="cantidad_s" required id="cantidad_s" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
                                 <label>Tipo de servicio:</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                                <select name="sistema" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">Plasma</option>
                                <option>Oxicorte</option>
                                <option>Laser</option>
                                <option>Waterjet</option>
                                <option>Otros</option>
-                             </select>
+                                </select>
                               </div>
                               <div class="form-group">
                                 <label for="modelo_s">Modelo:</label>
@@ -200,20 +197,21 @@
                                <label for="observacion">Observación:</label>
                               <textarea name="observacion" rows="2" cols="10" class="form-control"></textarea>
                               </div> 
-                                    
+                                   
                           </div>
-                        </div>    
+                        </div>
+                       
                         <div class="col-md-2">
- <!--DIV Controlador
+ <!--DIV Controlador-->
                           <div class="form-group">
                            <h5>Controlador</h5><br>
                               <div class="form-group">
                                <label for="cantidad_c">Cantidad</label>
-                                 <input type="number" name="cantida_c" required id="cantidad_c" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                                 <input type="number" name="cantidad_c" required id="cantidad_c" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
                                 <label>Controlador:</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                             <select name="controlador" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">Edge TI</option>
                                <option>Edge Pro</option>
                                <option>Edge Connect</option>
@@ -222,7 +220,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="ejes">No. Ejes</label>
-                                 <input type="number" name="ejes" id="ejes" placeholder="Ej: XPR-300" class="form-control">
+                                 <input type="number" name="ejes" id="ejes" class="form-control">
                               </div>  
                               <div class="form-group">
                                <label for="sd">Servo y Drive:</label>
@@ -236,16 +234,16 @@
                           </div>
                         </div>
                         <div class="col-md-2">
- <!--DIV sensor
+ <!--DIV sensor-->
                           <div class="form-group">
                            <h5>Sensor de altura</h5>
                               <div class="form-group">
                                <label for="cantidad_a">Cantidad</label>
-                                 <input type="number" name="cantida_s" required id="cantidad_a" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                                 <input type="number" name="cantidad_a" required id="cantidad_a" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
                                  <label>Sensor de altura</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                             <select  name="sensor" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">Sensor Connect</option>
                                <option>Sensor TI</option>
                                <option>Sensor Arcglide</option>
@@ -254,39 +252,39 @@
                               </div>
                               <div class="form-group">
                                 <label for="modelo_a">Modelo</label>
-                                 <input type="text" name="modelo" id="modelo" placeholder="Ej: THC" class="form-control">
+                                 <input type="text" name="modelo_a" id="modelo" placeholder="Ej: THC" class="form-control">
                               </div> 
                               <div class="form-group">
                                <label for="observacion_c">Observación:</label>
-                              <textarea name="observacion_c" rows="2" cols="10" class="form-control"></textarea>
+                              <textarea name="observacion_a" rows="2" cols="10" class="form-control"></textarea>
                               </div> 
                           </div>                        
                         </div>
                         <div class="col-md-3">
-  <!--DIV GUIAS
+  <!--DIV GUIAS-->
                         <div class="form-group">
                            <h5>Posición</h5>
                               <div class="form-group">
-            <!--Posición
+            <!--Posición-->
                                <label>Posición</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                             <select name="posicion" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">Trasversal</option>
                                <option>Dual Gantry</option>
                                <option>Gantry</option>
                              </select>
                               </div>
                               <div class="form-group">
-            <!---Guía
+            <!---Guía-->
                                  <label>Guía</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                             <select name="guia" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">HSR20A1SS</option>
                                <option>HSR25A1SS</option>
                              </select>
                               </div>
                                <div class="form-group">
-            <!---Balero
+            <!---Balero-->
                                  <label>Balero</label>
-                             <select class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
+                             <select name="balero" class="form-control select2 select2-hidden-accesible" style="width: 100%;" tabindex="-1" aria-hidde="true">
                                <option selected="selected">HSR20</option>
                                <option>HSR25</option>
                              </select>
@@ -294,7 +292,7 @@
                                 <input type="number" name="c" id="c" placeholder="Ej: 1" class="form-control">
                               </div> 
                               </div>
-            <!--Cremallera
+            <!--Cremallera-->
                               <div class="form-group">
                                <label for="cremallera">Cremallera:</label>
                               <input type="text" name="cremallera" id="cremallera" placeholder="Ej: BAL-0112" class="form-control">
@@ -306,7 +304,7 @@
                                 <input type="number" name="c1" id="c1" placeholder="Ej: 2" class="form-control">
                               </div>
                           </div>
-      <!--Motor
+      <!--Motor-->
                   <div id="alumnos" class="row">
                     <div id="lo-que-vamos-a-copiar">
                       <div class="col-xs-4">
@@ -325,7 +323,8 @@
                                  <input type="text" name="no_ejes" id="no_ejes" placeholder="Ej: MSK050" class="form-control">
                               </div> 
                               <div class="form-group">
-                                <label for="observacion_c">Observación:</label>
+                                <label for="observacion_m
+                                ">Observación:</label>
                                 <textarea name="observacion_m" rows="2" cols="10" class="form-control"></textarea>
                               </div>  
         </div>
@@ -336,6 +335,7 @@
              <button id="btn-alumno-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar</button>                
             </div>
           </div>
+          <input type="submit" name="agrega_ficha" value="Guardar" class="btn btn-primary"> 
 </div>
     <!--Pivote
                    <div class="col-md-12">
@@ -343,12 +343,7 @@
                             <h5><label for="detalle">Detalle de trabajos adicionales mecanicos y electrónicos</label></h5>
                             <textarea name="detalle" rows="2" cols="3" class="form-control"></textarea>
                           </div>
-                        </div>-->
-                      
-          </div>
-          </div>
-</form>
-          
+                        </div>-->         
           <!-- /.row -->
 
           <!-- Table row -->
@@ -359,8 +354,6 @@
           <div class="row no-print">
             <div class="col-xs-12">
               <!--<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>-->
-              <!--<a href="ficha_tecnica.php?agrega_ficha" class="btn btn-success pull-right" id="guardar-ficha"><i class="fa fa-check-circle-o"></i> Guardar Ficha-->
-              </a>
               <!--<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
                 <i class="fa fa-download"></i> Generate PDF
               </button>-->
@@ -451,6 +444,7 @@
         $('#form-agrega-tarea').parsley('validate');
       });
     </script>
+<!--Replica un div -->
     <script>
     $(document).ready(function(){
         
