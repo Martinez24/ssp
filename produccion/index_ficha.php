@@ -78,7 +78,7 @@
               <h2 class="page-header">
               <i class="fa fa-globe"></i>
                 <?php 
-                  echo (isset($tarea['proyecto']['no_factura'])?"Proyecto para: ".$tarea['proyecto']['nombre']:"Seleccione un Proyecto");
+                  echo (isset($tarea['proyecto']['no_factura'])?"Proyecto para: ".$tarea['proyecto']['nombre']:"Seleccione una Factura");
                 ?>
                 <small class="pull-right">Fecha: <?php echo date('d/m/Y');?></small>
               </h2>
@@ -304,15 +304,60 @@
                                 <input type="number" name="c1" id="c1" placeholder="Ej: 2" class="form-control">
                               </div>
                           </div>
-      <!--Motor-->
+                          </form>
+    <!--Aqui se ve el motor agregado-->
+      <div class="row">
+        <div class="col-xs-12 table-responsive" >
+          <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Cantidad</th>
+              <th>Motor</th>
+              <th>No. de ejes</th>
+              <th>Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            
+            if(count($tarea['gestiones']) > 0){
+              foreach ($tarea['gestiones'] as $index => $gestion){
+                print_r($tarea['cantidad']);
+                echo "<td>".$tarea['cantidad']."</td>";
+                echo "<td>".$gestion['motor']."</td>";
+                echo "<td>".$gestion['ejes']."</td>";
+                echo "<td>".$gestion['observacion']."</td>";
+                echo "<td><a heref='ficha_tecnica.php?eliminar_motor=".$index."' class='btn btn-sm btn-danger'><i class='fa fa-times'></i></a></td>";
+                echo "</tr>";
+              }
+              } else {
+                echo "<tr><td><span>No hay motores agregados</span></td></tr>";
+              }
+            ?>
+          </tbody>
+          </table>
+        </div>
+      </div>
+          <!--Terminan divs-->
+    <!--Motor-->
+    <a href="#" class="btn btn-success" id="agrega-motor"><i class="fa fa-plus">Agregar motor</i></a>
+    <div class="modal fade" id="motor-modal">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dissmiss="modal" aria-label="Close"><span aria-hidden="true"></span>x</button><h4 class="modal-title">Agregar motor</h4>
+        </div>
+        <form class="form-horizontal" id="form-agrega-motor" method="post" action="ficha_tecnica.php">
+          <div class="modal-body">
+          <!--Motor-->
                   <div id="alumnos" class="row">
                     <div id="lo-que-vamos-a-copiar">
-                      <div class="col-xs-4">
+                      <div class="col-xs-12">
                         <div class="well well-sm">
                           <h5>Motor</h5>
                               <div class="form-group">
                                  <label for="cantidad_m">Cantidad</label>
-                                  <input type="number" name="cantida_m" required id="cantidad_m" placeholder="Ej: 1,2,3" class="form-control" autofocus>
+                                  <input type="number" name="cantidad_m" required id="cantidad_m" placeholder="Ej: 1,2,3" class="form-control" autofocus>
                               </div>
                               <div class="form-group">
                                  <label for="motor">Motor</label>
@@ -327,16 +372,20 @@
                                 ">Observación:</label>
                                 <textarea name="observacion_m" rows="2" cols="10" class="form-control"></textarea>
                               </div>  
-        </div>
-    </div>            
-</div>
-          <div class="col-xs-4">
-            <div class="well">
-             <button id="btn-alumno-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar</button>                
-            </div>
+                        </div>
+                      </div>  
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-success" value="Agregar Motor" name="agrega-motor">  
+                            </div>          
+                    </div>
+            
           </div>
-          <input type="submit" name="agrega_ficha" value="Guardar" class="btn btn-primary"> 
-</div>
+        </form>
+      </div>
+      </div>
+    </div>
+   
     <!--Pivote
                    <div class="col-md-12">
                           <div class="form-group">
@@ -344,24 +393,8 @@
                             <textarea name="detalle" rows="2" cols="3" class="form-control"></textarea>
                           </div>
                         </div>-->         
-          <!-- /.row -->
-
-          <!-- Table row -->
-          
-          <!-- /.row -->
-
-          <!-- this row will not appear when printing -->
-          <div class="row no-print">
-            <div class="col-xs-12">
-              <!--<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>-->
-              <!--<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-                <i class="fa fa-download"></i> Generate PDF
-              </button>-->
-            </div>
-          </div>
+       
         </section>
-        <div class="clearfix"></div>
-      </div><!-- /.content-wrapper -->
       <footer class="main-footer">
       </footer>
     </div><!-- ./wrapper -->
@@ -422,8 +455,8 @@
         $('#agregar-proyecto').click(function(){
           $('#proyecto-modal').modal('show');
         });
-        $('#agregar-tarea').click(function(){
-          $('#tarea-modal').modal('show');
+        $('#agrega-motor').click(function(){
+          $('#motor-modal').modal('show');
         });
         $('#guardar-tarea').click(function(evt){
           evt.preventDefault();
@@ -444,38 +477,5 @@
         $('#form-agrega-tarea').parsley('validate');
       });
     </script>
-<!--Replica un div -->
-    <script>
-    $(document).ready(function(){
-        
-        // El formulario que queremos replicar
-        var formulario_alumno = $("#lo-que-vamos-a-copiar").html();
-        
-// El encargado de agregar más formularios
-$("#btn-alumno-agregar").click(function(){
-    // Agregamos el formulario
-    $("#alumnos").prepend(formulario_alumno);
-
-    // Agregamos un boton para retirar el formulario
-    $("#alumnos .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-alumno" type="button">Retirar</button>');
-
-    // Hacemos focus en el primer input del formulario
-    $("#alumnos .col-xs-4:first .well input:first").focus();
-
-    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
-    Plugins();
-});
-        
-        // Cuando hacemos click en el boton de retirar
-        $("#alumnos").on('click', '.btn-retirar-alumno', function(){
-            $(this).closest('.col-xs-4').remove();
-        })
-            
-        $("#frm-alumno").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>
-
   </body>
 </html>

@@ -1,4 +1,5 @@
 <?php 
+
 $host = 'localhost';
 $user = 'root';
 $password = '123';
@@ -22,10 +23,18 @@ $conexion = @mysql_connect($host, $user, $password);
        $resultado = mysql_query($sql3, $conexion);
        $sql4 = "INSERT INTO guia(posicion, guia, balero, c, cremallera, piñon, c1) VALUES('$posicion', '$guia', '$balero', '$c', '$cremallera', '$piñon', '$c1')";
        $resultado = mysql_query($sql4, $conexion);
-       print_r($sql4);
-       exit();
         if($resultado == 1)
             header("Location: index_ficha.php");
         exit;
+    }
+    if ($_POST['agrega-motor']) {
+    	extract($_POST);
+    	$gestion['cantidad']= $cantidad_m;
+    	$gestion['motor']= $motor;
+    	$gestion['ejes'] = $no_ejes;
+    	$gestion['observacion'] = $observacion_m;
+    	$tarea['gestiones'][] = $gestion;
+    	$_SESSION['tarea'] = $tarea;
+    	header("Location: index_ficha.php");
     }
 ?>
