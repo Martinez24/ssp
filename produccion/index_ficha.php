@@ -306,41 +306,44 @@
                           </div>
                           </form>
     <!--Aqui se ve el motor agregado-->
-      <div class="row">
-        <div class="col-xs-12 table-responsive" >
-          <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Cantidad</th>
-              <th>Motor</th>
-              <th>No. de ejes</th>
-              <th>Observación</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            
-            if(count($tarea['gestiones']) > 0){
-              foreach ($tarea['gestiones'] as $index => $gestion){
-                print_r($tarea['cantidad']);
-                echo "<td>".$tarea['cantidad']."</td>";
-                echo "<td>".$gestion['motor']."</td>";
-                echo "<td>".$gestion['ejes']."</td>";
-                echo "<td>".$gestion['observacion']."</td>";
-                echo "<td><a heref='ficha_tecnica.php?eliminar_motor=".$index."' class='btn btn-sm btn-danger'><i class='fa fa-times'></i></a></td>";
-                echo "</tr>";
-              }
-              } else {
-                echo "<tr><td><span>No hay motores agregados</span></td></tr>";
-              }
-            ?>
-          </tbody>
-          </table>
-        </div>
-      </div>
+      <<div class="row">
+            <div class="col-xs-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                     <th>Fecha de inicio</th>
+                      <th>Fecha entrega</th>
+                      <th>Observación</th>
+                      <th>Estado del área</th>                   
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php    
+                   if(count($tarea['gestiones']) > 0){
+                      foreach ($tarea['gestiones'] as $index => $gestion) {
+                        echo "<tr class='tarea'>";
+                  
+                  //Vista de los datos 
+                        echo "<td>".$gestion['cantidad']."</td>";
+                        echo "<td>".$gestion['motor']."</td>";
+                        echo "<td>".$gestion['ejes']."</td>";
+                        echo "<td>".$gestion['descripcion']."</td>";
+                        echo "<td><a href='gestiones.php?eliminar_tarea=".$index."' class='btn btn-sm btn-danger'><i class='fa fa-times'></i></a></td>";
+                      echo "</tr>";
+                      
+                      }
+                    } else {
+                      echo "<tr><td><span>No hay departamentos agregados</span></td></tr>";
+                   }  
+                    ?>
+                  </tbody>
+              </table>
+            </div>
+            <!-- /.col -->
+          </div>
           <!--Terminan divs-->
     <!--Motor-->
-    <a href="#" class="btn btn-success" id="agrega-motor"><i class="fa fa-plus">Agregar motor</i></a>
+    <a href="#" class="btn btn-success" id="agrega-motor"><i class="fa fa-plus">Agregar aa  motor</i></a>
     <div class="modal fade" id="motor-modal">
       <div class="modal-dialog">
       <div class="modal-content">

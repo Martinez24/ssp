@@ -7,6 +7,17 @@ $bd = 'ssp';
 $conexion = @mysql_connect($host, $user, $password);
 @mysql_select_db($bd, $conexion);
 
+if ($_POST['agrega-motor']) {
+    	extract($_POST);
+        $gestion['cantidad'] = $cantidad_m;
+        $gestion['motor'] = $motor;
+        $gestion['observacion'] = $observacion_m;
+        $gestion['ejes'] = $no_ejes;
+        $tarea['gestiones'][] = $gestion;
+        $_SESSION['tarea']= $tarea; 
+        header("Location: index_ficha.php");
+    }
+
  if(isset($_POST['agrega_ficha'])){
        extract($_POST);
        //Insercción de tipo de servicio
@@ -27,14 +38,5 @@ $conexion = @mysql_connect($host, $user, $password);
             header("Location: index_ficha.php");
         exit;
     }
-    if ($_POST['agrega-motor']) {
-    	extract($_POST);
-    	$gestion['cantidad']= $cantidad_m;
-    	$gestion['motor']= $motor;
-    	$gestion['ejes'] = $no_ejes;
-    	$gestion['observacion'] = $observacion_m;
-    	$tarea['gestiones'][] = $gestion;
-    	$_SESSION['tarea'] = $tarea;
-    	header("Location: index_ficha.php");
-    }
+    
 ?>
