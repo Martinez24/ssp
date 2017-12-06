@@ -15,7 +15,7 @@
    
               </ul>
               <li>
-              <a href="index_ficha.php">
+              <a href="test.php">
                 <i class="fa fa-file-pdf-o"></i>
                 <span>Ficha Técnica</span>
               </a>

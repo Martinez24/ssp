@@ -343,7 +343,7 @@
           </div>
           <!--Terminan divs-->
     <!--Motor-->
-    <a href="#" class="btn btn-success" id="agrega-motor"><i class="fa fa-plus">Agregar aa  motor</i></a>
+    <a href="#" class="btn btn-success" id="agrega-motor"><i class="fa fa-plus">Agregar motor</i></a>
     <div class="modal fade" id="motor-modal">
       <div class="modal-dialog">
       <div class="modal-content">

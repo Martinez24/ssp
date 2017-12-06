@@ -60,7 +60,7 @@
     // Se comprueba la existencia de la petición get que corresponde al nombre cancelar_venta
     if(isset($_GET['cancelar_tarea'])){
           $_SESSION['tarea'] = array('proyecto' => NULL, 'gestiones' => array());
-        header("Location: index_gestion.php");
+        header("Location: test.php");
     }
    //la petición get que corresponde al nombre guardar_venta
     if(isset($_GET['guardar_tarea'])){
